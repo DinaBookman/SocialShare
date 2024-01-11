@@ -3,19 +3,10 @@ import { Link } from "react-router-dom";
  function Login(){
 
     function loginFunc(){
-        useEffect(() => {
-            fetch('https://jsonplaceholder.typicode.com/posts')
-               .then((res) => res.json())
-               .then((data) => {
-                  console.log(data);
-                  setPosts(data);
-               })
-               .catch((err) => {
-                  console.log(err.message);
-               });
-         }, []);
+         
+                  
+                
     }
-
     return(<>
 
         <form>
@@ -32,4 +23,4 @@ import { Link } from "react-router-dom";
           
         </>) 
   };
-  export default Login;
+  export default Login
