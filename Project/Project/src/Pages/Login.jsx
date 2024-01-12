@@ -1,24 +1,31 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, json } from "react-router-dom";
  function Login(){
 
-    function loginFunc(){
-         
-                  
-                
+    const users = JSON.parse(localStorage.getItem("Users"));
+
+    function loginFunc(event){
+        event.preventDefault();
+        let userName=event.target[0].value;
+        let password=event.target[1].value
+
+        fetch(`http://localhost:3000/users/?username=${userName}&website=${password}`)
+        .then(response => (response.json()))
+        .then(response=>console.log(response))
+        .then(response=>localStorage.setItem("Users", response))
     }
     return(<>
 
-        <form>
-            <label for="userName">UserName</label>
-            <input id="userName" placeholder="Enter UserName"></input><br/>
-            <label for="password">Password</label>
-            <input id="password" type="password" placeholder="Enter Pasword"></input>
+        <form onSubmit={loginFunc}>
+            <label>UserName</label>
+            <input placeholder="Enter UserName" required></input><br/>
+            <label >Password</label>
+            <input type="password" placeholder="Enter Pasword" required></input>
+            <button type="submit">Login</button>
         </form>
-        <button onClick={loginFunc()}>Login</button>
-        <h3>To </h3>
+        <h3>To register click </h3>
         <Link  to={"/register"}>
-                     Register 
+                     Here 
                 </Link>
           
         </>) 
