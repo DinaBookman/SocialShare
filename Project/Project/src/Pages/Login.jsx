@@ -2,17 +2,19 @@ import React from "react";
 import { Link, json } from "react-router-dom";
  function Login(){
 
-    const users = JSON.parse(localStorage.getItem("Users"));
+    const users = JSON.parse(localStorage.getItem('users'))|| [];
 
     function loginFunc(event){
         event.preventDefault();
         let userName=event.target[0].value;
-        let password=event.target[1].value
-
+        let password=event.target[1].value;
         fetch(`http://localhost:3000/users/?username=${userName}&website=${password}`)
         .then(response => (response.json()))
-        .then(response=>console.log(response))
-        .then(response=>localStorage.setItem("Users", response))
+        .then(response=>{
+            console.log(response)
+            users.push(...users, JSON.stringify(response))
+            localStorage.setItem("users" ,users)
+        })
     }
     return(<>
 
