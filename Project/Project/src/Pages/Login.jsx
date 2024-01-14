@@ -1,8 +1,9 @@
 import React from "react";
 import { Link, json } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
  function Login(){
-
     const users = JSON.parse(localStorage.getItem('users'))|| [];
+    const navigate= useNavigate();
 
     function loginFunc(event){
         event.preventDefault();
@@ -11,11 +12,16 @@ import { Link, json } from "react-router-dom";
         fetch(`http://localhost:3000/users/?username=${userName}&website=${password}`)
         .then(response => (response.json()))
         .then(response=>{
-            console.log(response)
-            users.push(...users, JSON.stringify(response))
-            localStorage.setItem("users" ,users)
+            response.length==0?alert("No such user. Please register"): successLogin(response)
         })
     }
+
+    function successLogin(response){
+        users.push(...users, JSON.stringify(response));
+        localStorage.setItem("users" ,users);
+        navigate("/home")
+    }
+    
     return(<>
 
         <form onSubmit={loginFunc}>
