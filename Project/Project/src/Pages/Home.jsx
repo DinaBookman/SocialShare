@@ -5,6 +5,7 @@ import { useState } from "react";
 
  function Home(){
     const [isShowInfo, setIsShowInfo]=useState(false);
+    const [isShowTodos, setIsShowTodos]=useState(false);
     const navigate= useNavigate();
     let user=JSON.parse(localStorage.getItem("User")); 
     if(user.length != 0)
@@ -20,20 +21,31 @@ import { useState } from "react";
     }
 
     function showTodos(){
+        let resp;
         setIsShowInfo(false);
         fetch(`http://localhost:3000/todos/?userId=${user.id}`)
         .then(response => (response.json()))
-        .then(response => console.log(response));
+        .then(response => resp=response)
+        .then(response=>{console.log(resp)
+        for(let i=0; i<resp.length; i++)
+        {
+            console.log(resp[i].id)
+            return(<><h1>i</h1><h2>{resp[i].title}</h2><input type="checkBox">{resp[i].completed}</input></>)
+        }})
     }
+
+ 
+   
+
 
     return(<>
          <h1>Home!!</h1>
           <button onClick={logOutFunc}>LogOut</button>
           <button>Albums</button>
           <button>Posts</button>
-          <button onClick={showTodos}>Todos</button>
+          <button onClick={setIsShowTodos(true)}>Todos</button>
           <button onClick={showInfo}>Info</button>
-
+    {isShowTodos && showTodos()}
           {isShowInfo &&
             <form>
                 <p>ID: {user.id}</p>
