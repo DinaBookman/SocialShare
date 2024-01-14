@@ -2,7 +2,6 @@ import React from "react";
 import { Link, json } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
  function Login(){
-    const users = JSON.parse(localStorage.getItem('User'))|| [];
     const navigate= useNavigate();
 
     function loginFunc(event){
@@ -17,8 +16,7 @@ import { useNavigate } from "react-router-dom";
     }
 
     function successLogin(response){
-        users.push(...users, JSON.stringify(response));
-        localStorage.setItem("User" ,users);
+        localStorage.setItem("User" ,JSON.stringify(response));
         navigate("/home")
     }
     
