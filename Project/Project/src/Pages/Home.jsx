@@ -18,7 +18,10 @@ import { useState } from "react";
     }
 
     function showTodos(){
-        
+        setIsShowInfo(false);
+        fetch(`http://localhost:3000/todos/?userId=${user[0].id}`)
+        .then(response => (response.json()))
+        .then(response => console.log(response));
     }
 
     return(<>
@@ -49,7 +52,6 @@ import { useState } from "react";
                 <p>Name: {user[0].company.name}</p>
                 <p>CatchPhrase: {user[0].company.catchPhrase}</p>
                 <p>Bs: {user[0].company.bs}</p>
-
             </form>
             }
         </>) 
