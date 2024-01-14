@@ -1,4 +1,5 @@
-{ "post":[
+{
+  "post": [
     {
       "userId": 1,
       "id": 1,
@@ -600,7 +601,7 @@
       "body": "cupiditate quo est a modi nesciunt soluta\nipsa voluptas error itaque dicta in\nautem qui minus magnam et distinctio eum\naccusamus ratione error aut"
     }
   ],
-  "comments":[
+  "comments": [
     {
       "postId": 1,
       "id": 1,
@@ -4102,7 +4103,7 @@
       "body": "perspiciatis quis doloremque\nveniam nisi eos velit sed\nid totam inventore voluptatem laborum et eveniet\naut aut aut maxime quia temporibus ut omnis"
     }
   ],
-  "albums":[
+  "albums": [
     {
       "userId": 1,
       "id": 1,
@@ -4604,7 +4605,7 @@
       "title": "enim repellat iste"
     }
   ],
-  "photos":[
+  "photos": [
     {
       "albumId": 1,
       "id": 1,
@@ -39606,7 +39607,7 @@
       "thumbnailUrl": "https://via.placeholder.com/150/6dd9cb"
     }
   ],
-  "todos":[
+  "todos": [
     {
       "userId": 1,
       "id": 1,
@@ -40808,7 +40809,7 @@
       "completed": false
     }
   ],
-  "users":[
+  "users": [
     {
       "id": 1,
       "name": "Leanne Graham",
@@ -41037,6 +41038,52 @@
         "name": "Hoeger LLC",
         "catchPhrase": "Centralized empowering task-force",
         "bs": "target end-to-end models"
+      }
+    },
+    {
+      "id": "-1",
+      "name": "a",
+      "username": "a",
+      "email": "d@gmail.com",
+      "address": {
+        "street": "a",
+        "suite": "a",
+        "city": "a",
+        "zipcode": "a",
+        "geo": {
+          "lat": "-1",
+          "lng": "1"
+        }
+      },
+      "phone": "123454321",
+      "website": "a",
+      "company": {
+        "name": "a",
+        "catchPhrase": "a",
+        "bs": "a"
+      }
+    },
+    {
+      "id": "126349181",
+      "name": "Dina",
+      "username": "w",
+      "email": "Dina@gmail.com",
+      "address": {
+        "street": "Ramat Hagolan",
+        "suite": "apt. 1",
+        "city": "Jerusalem",
+        "zipcode": "12332",
+        "geo": {
+          "lat": "36",
+          "lng": "-12"
+        }
+      },
+      "phone": "0583236269",
+      "website": "w",
+      "company": {
+        "name": "Dina @ co",
+        "catchPhrase": "all you need",
+        "bs": "all you want"
       }
     }
   ]
