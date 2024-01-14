@@ -2,7 +2,7 @@ import React from "react";
 import { Link, json } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
  function Login(){
-    const users = JSON.parse(localStorage.getItem('users'))|| [];
+    const users = JSON.parse(localStorage.getItem('User'))|| [];
     const navigate= useNavigate();
 
     function loginFunc(event){
@@ -18,7 +18,7 @@ import { useNavigate } from "react-router-dom";
 
     function successLogin(response){
         users.push(...users, JSON.stringify(response));
-        localStorage.setItem("users" ,users);
+        localStorage.setItem("User" ,users);
         navigate("/home")
     }
     

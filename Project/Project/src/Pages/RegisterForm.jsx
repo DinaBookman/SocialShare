@@ -1,14 +1,15 @@
 import { useLocation, useParams } from "react-router-dom";
 
-function RegisterForm(){
-    const {state}=
 
+function RegisterForm(props){
+
+    const {userName,password}= props;
     function confirmRegistration(event){
         event.preventDefault();
         // let _ID=event.target[0].value;
         // let _name=event.target[1].value;
-        // let _userName=state.UserName;
-        console.log(state.UserName)
+        console.log(userName)
+        console.log(password)
 
         // let _email=event.target[2].value;
         // let _address={
