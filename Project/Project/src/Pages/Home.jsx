@@ -6,7 +6,9 @@ import { useState } from "react";
  function Home(){
     const [isShowInfo, setIsShowInfo]=useState(false);
     const navigate= useNavigate();
-    const user=JSON.parse(localStorage.getItem("User"));    
+    let user=JSON.parse(localStorage.getItem("User")); 
+    if(user.length != 0)
+        user=user[0];
 
     function logOutFunc(){
         localStorage.removeItem("User");

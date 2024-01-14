@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 function RegisterForm(props){
     const navigate= useNavigate();
     const {userName,password}= props;
+
     function confirmRegistration(event){
         event.preventDefault();
         console.log(userName)
@@ -38,11 +39,14 @@ function RegisterForm(props){
                 body: JSON.stringify(newUser)
             };
         fetch('http://localhost:3000/users', requestOptions)
-                .then(response => response.json()) 
-                 .then( navigate("/home") )
-                .then(localStorage.setItem("User",JSON.stringify(newUser)))
-
+                
+        let userArr=[];
+        userArr.push(newUser)
+        localStorage.setItem("User" ,[JSON.stringify(userArr)])
+        navigate("/home")
     }
+
+   
 
     return(
         <form onSubmit={confirmRegistration}>
