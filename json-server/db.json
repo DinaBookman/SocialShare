@@ -41292,6 +41292,29 @@
         "catchPhrase": "e",
         "bs": "e"
       }
+    },
+    {
+      "id": "12",
+      "name": "MOSES FRIEDMAN BY PARK HOUSE",
+      "username": "dina",
+      "email": "y7653085@gmail.com",
+      "address": {
+        "street": "1206 48th Street",
+        "suite": "1",
+        "city": "BROOKLYN",
+        "zipcode": "11219-3009",
+        "geo": {
+          "lat": "12",
+          "lng": "2"
+        }
+      },
+      "phone": "7188718100",
+      "website": "12",
+      "company": {
+        "name": "2",
+        "catchPhrase": "1",
+        "bs": "1"
+      }
     }
   ]
 }

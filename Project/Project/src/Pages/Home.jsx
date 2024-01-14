@@ -19,7 +19,7 @@ import { useState } from "react";
 
     function showTodos(){
         setIsShowInfo(false);
-        fetch(`http://localhost:3000/todos/?userId=${user[0].id}`)
+        fetch(`http://localhost:3000/todos/?userId=${user.id}`)
         .then(response => (response.json()))
         .then(response => console.log(response));
     }
@@ -34,24 +34,24 @@ import { useState } from "react";
 
           {isShowInfo &&
             <form>
-                <p>ID: {user[0].id}</p>
-                <p>Name: {user[0].name}</p>
-                <p>User Name: {user[0].username}</p>
-                <p>User Email: {user[0].email}</p>
+                <p>ID: {user.id}</p>
+                <p>Name: {user.name}</p>
+                <p>User Name: {user.username}</p>
+                <p>User Email: {user.email}</p>
                 <p>User Adress:</p>
-                <p>street: {user[0].address.street}</p>
-                <p>Suite: {user[0].address.suite}</p>
-                <p>City: {user[0].address.city}</p>
-                <p>Zipcode: {user[0].address.zipcode}</p>
+                <p>street: {user.address.street}</p>
+                <p>Suite: {user.address.suite}</p>
+                <p>City: {user.address.city}</p>
+                <p>Zipcode: {user.address.zipcode}</p>
                 <p>User Geo</p>
-                <p>Lat: {user[0].address.geo.lat}</p>
-                <p>Lng: {user[0].address.geo.lng}</p>
-                <p>Phone: {user[0].phone}</p>
-                <p>website: {user[0].website}</p>
+                <p>Lat: {user.address.geo.lat}</p>
+                <p>Lng: {user.address.geo.lng}</p>
+                <p>Phone: {user.phone}</p>
+                <p>website: {user.website}</p>
                 <p>Company:</p>
-                <p>Name: {user[0].company.name}</p>
-                <p>CatchPhrase: {user[0].company.catchPhrase}</p>
-                <p>Bs: {user[0].company.bs}</p>
+                <p>Name: {user.company.name}</p>
+                <p>CatchPhrase: {user.company.catchPhrase}</p>
+                <p>Bs: {user.company.bs}</p>
             </form>
             }
         </>) 
