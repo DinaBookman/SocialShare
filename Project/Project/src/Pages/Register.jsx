@@ -10,19 +10,21 @@ import { Link } from "react-router-dom";
 
     function registerFunc(event){
         event.preventDefault();
-        setUserName(event.target[0].value);
-        setPasword(event.target[1].value);
+        let _userName= event.target[0].value;
+        let _password= event.target[1].value;
         let verifyPassword=event.target[2].value;
-        if(password!=verifyPassword){
+        if(_password!=verifyPassword){
             alert("The verified password does not match the password")
             return;
         }
-        fetch(`http://localhost:3000/users/?username=${userName}`, {method:"HEAD"})
+        fetch(`http://localhost:3000/users/?username=${_userName}`, {method:"HEAD"})
             .then(response=>{
             console.log(response)
             response.status!=200?alert("UserName already exists."):setContinueReg(true)
         })
 
+        setUserName(_userName);
+        setPasword(_password);
     }
 
 
@@ -33,7 +35,7 @@ import { Link } from "react-router-dom";
             <label >Password</label>
             <input id="password" type="password" placeholder="Enter Pasword" required></input><br/>
             <label >verify password</label>
-            <input type="verPassword" placeholder="verify Pasword" required></input>
+            <input type="password" placeholder="verify Pasword" required></input>
             <button type="submit">Register</button>
         </form>
         <h3>To Login click </h3>
