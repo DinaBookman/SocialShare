@@ -19,20 +19,39 @@ function Posts(){
                 console.log(response)
         })
         .catch(err=>console.log("err"));
-       },[])
+    },[])
 
 
 
-        function showPostByfilter(event){
-            event.preventDefault();
-            let choice=event.target.value;
-            console.log(choice)
-            setFitler(choice)
+    function showPostByfilter(event){
+        event.preventDefault();
+        let choice=event.target.value;
+        console.log(choice)
+        setFitler(choice)
+    }
+
+    function addPost(){
+        setIsAddNew(true)
+    }
+
+
+    function deletePost(ID) 
+    {   
+        fetch(`http://localhost:3000/posts/${ID}`, {
+        method: 'DELETE',
+        headers: {
+        'Content-Type': 'application/json',
+        }}).then(response => {
+        if (!response.ok) {
+            throw new Error(`Request failed with status: ${response.status}`);
         }
+            setPostsData(postsData.filter(post => post.id !== ID) );
+        }).catch(error => {
+        console.error(error);
+        // setCommentArea("Server error. try again later.")      
+        });
+    }
 
-        function addPost(){
-            setIsAddNew(true)
-        }
 
        return( 
         <>
@@ -48,7 +67,7 @@ function Posts(){
                     return(<><tr key={index}></tr>
                     <td>{post.id}</td>
                     <td>{post.title}</td>
-                    <td ><button onClick={()=>deletePost(todo.id)}>🗑️</button></td>
+                    <td ><button onClick={()=>deletePost(post.id)}>🗑️</button></td>
                      </>)
                  })}
             </tbody>
@@ -65,10 +84,11 @@ function Posts(){
             </form>
 
             <button onClick={addPost}>add new post</button>
-            {isAddNew && <AddNewPost setIsAddNew={setIsAddNew}/>}
+            {isAddNew && <AddNewPost setIsAddNew={setIsAddNew} userID={user.id}/>}
             {!filter=='' && <Filter filter={filter} postsData={postsData} setFitler={setFitler} setPostsData={setPostsData} userID={user.id} allPosts={allPosts} />}
         </>
     )
 }
+
 
 export default Posts

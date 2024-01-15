@@ -7,7 +7,7 @@ function AddNewPost(props){
         event.preventDefault();
 
         let newPost={        
-            "userId": event.target[0].value,
+            "userId": props.userID,
             "id": event.target[0].value,
             "title": event.target[1].value,
             "body": event.target[2].value
@@ -17,7 +17,7 @@ function AddNewPost(props){
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(newPost)
         };
-        fetch('http://localhost:3000/posts', newRequest);
+        fetch(`http://localhost:3000/posts`, newRequest);
         console.log(newPost)
         props.setIsAddNew(false)
     }
