@@ -6,6 +6,7 @@ import Register from './Pages/Register.jsx'
 import Home from './Pages/Home.jsx'
 import RegisterForm from './Pages/RegisterForm.jsx'
 import Todos from './Pages/Todos.jsx'
+import Posts from './Pages/Posts.jsx'
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 
 function App() {
@@ -16,9 +17,10 @@ function App() {
           <Route path="/" element={<Navigate to="/login"/>} />
           <Route path="login" element={<Login/>}/>
           <Route path="register" element={<Register/>}/>
+          <Route path="registerForm" element={<RegisterForm/>}/>
           <Route path="home" element={<Home/>}/>
           <Route path="home/todos" element={<Todos/>}/>
-          <Route path="registerForm" element={<RegisterForm/>}/>
+          <Route path="home/posts" element={<Posts/>}/>
 
           <Route path="*" element={<NoPage/>}/>
           
