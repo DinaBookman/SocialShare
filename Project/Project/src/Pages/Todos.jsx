@@ -2,16 +2,20 @@ import React from "react";
 import { useState } from "react";
 
 function Todos(){
-    const [isShowTodos, setIsShowTodos]=useState(false);
     const [todosData, setTodosData]=useState([]);
     
+    let user=JSON.parse(localStorage.getItem("User")); 
+    if(user.length != 0)
+        user=user[0];
+
     function showTodos(){
+
         fetch(`http://localhost:3000/todos/?userId=${user.id}`)
         .then(response => (response.json()))
-        .then(data => {setTodosData(data)
-            return(<p>{data[1]}</p>)
+        .then(data => {
+            console.log(data)
+            setTodosData(data)
         })
-        setIsShowTodos(true)
         
     }
 
@@ -22,7 +26,8 @@ function Todos(){
 
     return( 
         <>
-        {/* {showTodos()} */}
+        {showTodos}
+        {/* {console.log(todosData[1])} */}
         <h1>Todos!!</h1>
         </>
     )
