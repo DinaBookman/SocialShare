@@ -16,10 +16,9 @@ function Posts(){
         .then(response => (response.json()))
         .then(response=> {(setPostsData(response))
                 setAllPosts([...response])
-            console.log(allPosts)
-
+                console.log(response)
         })
-        .catch(err=>console.log(err));
+        .catch(err=>console.log("err"));
        },[])
 
 
@@ -67,7 +66,7 @@ function Posts(){
 
             <button onClick={addPost}>add new post</button>
             {isAddNew && <AddNewPost setIsAddNew={setIsAddNew}/>}
-            {!filter=='' && <Filter filter={filter} postsData={postsData} setFitler={setFitler} setPostsData={setPostsData} userID={user.id} />}
+            {!filter=='' && <Filter filter={filter} postsData={postsData} setFitler={setFitler} setPostsData={setPostsData} userID={user.id} allPosts={allPosts} />}
         </>
     )
 }

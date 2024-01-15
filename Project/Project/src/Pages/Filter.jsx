@@ -2,20 +2,24 @@ import React,{useState} from "react"
 
 function Filter(props){
 
-    const {filter,postsData,setPostsData,userID}=props;
+    const {filter,postsData,setFitler,setPostsData,userID,allPosts}=props;
 
     function filterPosts(event){
         console.log(userID)
         event.preventDefault();
         let wantedItem=event.target[0].value;
         console.log(wantedItem)
+        if(wantedItem==''){
+            setPostsData(allPosts)
+            return;
+        }
         switch(filter){
             case "ID":
                 fetch(`http://localhost:3000/posts/?userId=${userID}&id=${wantedItem}`)
                 .then(response => (response.json()))
                 .then(response=>{
                     (setPostsData(response))
-                    console.log(postsData)
+                    // console.log(postsData)
                 })
             case "Title":
                 fetch(`http://localhost:3000/posts/?userId=${userID}&title=${wantedItem}`)
@@ -25,6 +29,7 @@ function Filter(props){
                     setPostsData(response)
                 })
         }
+        setFitler('')
     }
 
 
