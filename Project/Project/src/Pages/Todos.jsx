@@ -1,34 +1,36 @@
-import React from "react";
-import { useState } from "react";
-
+import React,{useEffect,useState} from "react";
 function Todos(){
     const [todosData, setTodosData]=useState([]);
-    
     let user=JSON.parse(localStorage.getItem("User")); 
     if(user.length != 0)
         user=user[0];
 
-    function showTodos(){
-
+    useEffect(()=>{ 
         fetch(`http://localhost:3000/todos/?userId=${user.id}`)
         .then(response => (response.json()))
-        .then(data => {
-            console.log(data)
-            setTodosData(data)
-        })
-        
-    }
-
-
-
-
-
-
-    return( 
+        .then(res=> (setTodosData(res)))
+        .catch(err=>console.log(err));
+       },[])
+return( 
         <>
-        {showTodos}
-        {/* {console.log(todosData[1])} */}
-        <h1>Todos!!</h1>
+        <table>
+             <thead>
+                <th>UserID</th>
+                <th>id</th>
+                <th>Completed</th> 
+                 
+            </thead>
+            <tbody>
+                 {todosData.map((todo,index)=>{
+                    return(<><tr key={index}></tr>
+                    <td>{todo.userId}</td>
+                    <td>{todo.id}</td>
+                    <td>{todo.title}</td>
+                     </>)
+                 })}
+            </tbody>
+        </table>
+         
         </>
     )
 }

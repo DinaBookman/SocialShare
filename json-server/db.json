@@ -252,6 +252,29 @@
         "catchPhrase": "6",
         "bs": "6"
       }
+    },
+    {
+      "id": "2",
+      "name": "sara",
+      "username": "dina",
+      "email": "e@ddf",
+      "address": {
+        "street": "r",
+        "suite": "r",
+        "city": "r",
+        "zipcode": "r",
+        "geo": {
+          "lat": "4",
+          "lng": "-5"
+        }
+      },
+      "phone": "6321345",
+      "website": "e",
+      "company": {
+        "name": "frdd",
+        "catchPhrase": "tttt",
+        "bs": "tyyytt"
+      }
     }
   ],
   "todos": [
