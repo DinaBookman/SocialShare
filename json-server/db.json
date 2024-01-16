@@ -231,71 +231,53 @@
       }
     },
     {
-      "id": "222",
-      "name": "3",
-      "username": "kl",
-      "email": "5@as",
+      "id": "122",
+      "name": "1",
+      "username": "s",
+      "email": "sara@gam",
       "address": {
-        "street": "6",
-        "suite": "5",
-        "city": "21",
-        "zipcode": "6",
+        "street": "q",
+        "suite": "a",
+        "city": "s",
+        "zipcode": "w",
         "geo": {
-          "lat": "6",
-          "lng": "6"
+          "lat": "2334e4",
+          "lng": "23334"
         }
       },
-      "phone": "6",
-      "website": "l",
+      "phone": "131431232",
+      "website": "s",
       "company": {
-        "name": "6",
-        "catchPhrase": "6",
-        "bs": "6"
+        "name": "3322",
+        "catchPhrase": "334",
+        "bs": "332"
       }
     },
     {
-      "id": "2",
-      "name": "sara",
-      "username": "dina",
-      "email": "e@ddf",
+      "id": "12",
+      "name": "33",
+      "username": "gg",
+      "email": "44@gmail.com",
       "address": {
-        "street": "r",
-        "suite": "r",
-        "city": "r",
-        "zipcode": "r",
+        "street": "44",
+        "suite": "44",
+        "city": "33",
+        "zipcode": "334",
         "geo": {
-          "lat": "4",
-          "lng": "-5"
+          "lat": "443",
+          "lng": "345"
         }
       },
-      "phone": "6321345",
-      "website": "e",
+      "phone": "3345432",
+      "website": "gg",
       "company": {
-        "name": "frdd",
-        "catchPhrase": "tttt",
-        "bs": "tyyytt"
+        "name": "33",
+        "catchPhrase": "44",
+        "bs": "554"
       }
     }
   ],
   "todos": [
-    {
-      "userId": "1",
-      "id": "1",
-      "title": "delectus aut autem",
-      "completed": false
-    },
-    {
-      "userId": "1",
-      "id": "2",
-      "title": "quis ut nam facilis et officia qui",
-      "completed": false
-    },
-    {
-      "userId": "1",
-      "id": "3",
-      "title": "fugiat veniam minus",
-      "completed": false
-    },
     {
       "userId": "1",
       "id": "4",
@@ -312,12 +294,6 @@
       "userId": "1",
       "id": "6",
       "title": "qui ullam ratione quibusdam voluptatem quia omnis",
-      "completed": false
-    },
-    {
-      "userId": "1",
-      "id": "7",
-      "title": "illo expedita consequatur quia in",
       "completed": false
     },
     {
@@ -397,12 +373,6 @@
       "id": "20",
       "title": "ullam nobis libero sapiente ad optio sint",
       "completed": true
-    },
-    {
-      "userId": "2",
-      "id": "21",
-      "title": "suscipit repellat esse quibusdam voluptatem incidunt",
-      "completed": false
     },
     {
       "userId": "2",
@@ -517,18 +487,6 @@
       "id": "40",
       "title": "totam atque quo nesciunt",
       "completed": true
-    },
-    {
-      "userId": "3",
-      "id": "41",
-      "title": "aliquid amet impedit consequatur aspernatur placeat eaque fugiat suscipit",
-      "completed": false
-    },
-    {
-      "userId": "3",
-      "id": "42",
-      "title": "rerum perferendis error quia ut eveniet",
-      "completed": false
     },
     {
       "userId": "3",
@@ -1476,6 +1434,18 @@
       "userId": "10",
       "id": "200",
       "title": "ipsam aperiam voluptates qui",
+      "completed": false
+    },
+    {
+      "id": "201",
+      "userId": "4",
+      "title": "Hey",
+      "completed": false
+    },
+    {
+      "id": "203",
+      "userId": "1",
+      "title": "Miriam",
       "completed": false
     }
   ],

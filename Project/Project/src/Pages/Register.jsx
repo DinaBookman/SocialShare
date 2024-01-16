@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState} from "react";
 import React from "react";
 import RegisterForm from "./RegisterForm";
 import { Link } from "react-router-dom";
@@ -7,7 +7,6 @@ import { Link } from "react-router-dom";
     const [continueReg, setContinueReg]=useState(false);
     const [userName, setUserName]=useState("");
     const[password, setPasword]=useState("");
-
     function registerFunc(event){
         event.preventDefault();
         let _userName= event.target[0].value;
@@ -28,8 +27,8 @@ import { Link } from "react-router-dom";
 
     return(<>
         { !continueReg && <> <form onSubmit={registerFunc}>
-            <label>UserName</label>
-            <input placeholder="Enter UserName" required></input><br/>
+            <label >UserName</label>
+            <input  placeholder="Enter UserName" required></input><br/>
             <label >Password</label>
             <input id="password" type="password" placeholder="Enter Pasword" required></input><br/>
             <label >verify password</label>

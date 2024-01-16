@@ -1,8 +1,7 @@
-import React from "react";
-import { Link } from "react-router-dom";
+ import React,{useState} from "react";
 import { useNavigate } from "react-router-dom";
-import { useState } from "react";
-
+ 
+ 
  function Home(){
     const [isShowInfo, setIsShowInfo]=useState(false);
     const navigate= useNavigate();
@@ -55,7 +54,9 @@ import { useState } from "react";
                 <p>CatchPhrase: {user.company.catchPhrase}</p>
                 <p>Bs: {user.company.bs}</p>
             </form>
+            
             }
+            
         </>) 
   };
   export default  Home;

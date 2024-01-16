@@ -1,5 +1,5 @@
 import React from "react";
-import { Link, json } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
  function Login(){
     const navigate= useNavigate();
@@ -24,7 +24,7 @@ import { useNavigate } from "react-router-dom";
 
         <form onSubmit={loginFunc}>
             <label>UserName</label>
-            <input placeholder="Enter UserName" required></input><br/>
+            <input  placeholder="Enter UserName" required></input><br/>
             <label >Password</label>
             <input type="password" placeholder="Enter Pasword" required></input>
             <button type="submit">Login</button>
