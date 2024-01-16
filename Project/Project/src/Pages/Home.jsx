@@ -20,7 +20,10 @@ import { useNavigate } from "react-router-dom";
 
     function todos(){
         navigate("./todos");
+    }
 
+    function posts(){
+        navigate("./posts");
     }
 
 
@@ -30,7 +33,7 @@ import { useNavigate } from "react-router-dom";
          <h1>Home!!</h1>
           <button onClick={logOutFunc}>LogOut</button>
           <button>Albums</button>
-          <button>Posts</button>
+          <button onClick={posts}>Posts</button>
           <button onClick={todos}>Todos</button>
           <button onClick={showInfo}>Info</button>
           {isShowInfo &&

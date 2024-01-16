@@ -16,9 +16,9 @@ function App() {
           <Route path="/" element={<Navigate to="/login"/>} />
           <Route path="login" element={<Login/>}/>
           <Route path="register" element={<Register/>}/>
-          <Route path="home" element={<Home/>}/>
+                    <Route path="home" element={<Home/>}/>
           <Route path="home/todos" element={<Todos/>}/>
-          <Route path="registerForm" element={<RegisterForm/>}/>
+          <Route path="home/posts" element={<Posts/>}/>
 
           <Route path="*" element={<NoPage/>}/>
           
