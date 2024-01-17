@@ -1,42 +1,28 @@
- import React,{useState} from "react";
- import Info from './Info'
-import { useNavigate } from "react-router-dom";
+ import React,{useEffect, useState} from "react";
+import { useNavigate ,Outlet, NavLink,useParams} from "react-router-dom";
  
  
  function Home(){
-    const [isShowInfo, setIsShowInfo]=useState(false);
+    const [currentUser,setCurrentUser]=useState(JSON.parse(localStorage.getItem("User")))
     const navigate= useNavigate();
-    let user=JSON.parse(localStorage.getItem("User")); 
-    if(user.length != 0)
-        user=user[0];
+   const {userId}=useParams()
 
-    function logOutFunc(){
-        localStorage.removeItem("User");
-        navigate("/login");
+    const logOut=()=>{
+        setCurrentUser(null)
+        navigate("/");
+        localStorage.clear; 
+        
     }
+    useEffect(()=>{{(currentUser===null||currentUser.id!=userId) && navigate("/") };},[currentUser])
 
-     
-
-     
-    function posts(){
-        navigate("./posts");
-    }
-
-
- 
-
-    return(<>
+ return(<>
          <h1>Home!!</h1>
-          <button onClick={logOutFunc}>LogOut</button>
-          <button>Albums</button>
-          <button onClick={()=>navigate(`/users/${user.id}/Posts`)}>Posts</button>
-          <button onClick={()=>navigate(`/users/${user.id}/todos`)}>Todos</button>
-          <button onClick={()=>navigate(`/users/${user.id}/Info`,{state:{user:user}})}>Info</button>
-          {isShowInfo &&<Info user={user}/> 
-            
-            
-            }
-            
+         <NavLink onClick={()=>logOut()}>LogOut</NavLink><br/>
+         <NavLink to="info">Info</NavLink><br/>
+         <NavLink to="posts">Posts</NavLink><br/>
+         <NavLink to="todos">Todos</NavLink><br/>
+         <NavLink to="albums">Albums</NavLink><br/>
+         <Outlet/>
         </>) 
   };
   export default  Home;

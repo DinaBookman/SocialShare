@@ -16,8 +16,8 @@ import { useNavigate } from "react-router-dom";
     }
 
     function successLogin(response){
-        localStorage.setItem("User" ,JSON.stringify(response));
-        navigate("/home")
+        localStorage.setItem("User" , JSON.stringify(response[0]));
+        navigate(`/users/${response[0].id}/home`)
     }
     
     return(<>

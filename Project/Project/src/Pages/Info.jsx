@@ -1,13 +1,7 @@
- import React, {useEffect} from "react";
-import { useNavigate,useLocation } from "react-router-dom";
+ import React  from "react";
+import { useNavigate  } from "react-router-dom";
 function Info(){
-    const navigate=useNavigate()
-    const location=useLocation()
-    const  user=location.state?.user || {};;
-     
-    
-    
-     
+    let user=JSON.parse(localStorage.getItem("User")); 
     return(<>
     <form>
                 <p>ID: {user.id}</p>

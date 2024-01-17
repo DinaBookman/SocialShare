@@ -1,10 +1,10 @@
-import React,{useState} from "react"
+/*import React,{useState} from "react"
 
 function Filter(props){
 
     const {filter,postsData,setFilter,userID}=props;
     const [filterData,setFilterData]=useState(postsData)
-
+    
     function filterPosts(event){
         console.log(userID)
         event.preventDefault();
@@ -49,4 +49,4 @@ function Filter(props){
 }
 
 
-export default Filter
+export default Filter*/

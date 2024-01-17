@@ -1,6 +1,8 @@
 import React from "react";
+import UpdatePost from "./UpdatePost";
 function DisplayPost(props){
     const {post,postsData,allPosts,setAllPosts,setPostsData}=props;
+     
     function deletePost(ID) 
     {   
         fetch(`http://localhost:3000/posts/${ID}`, {
@@ -17,10 +19,13 @@ function DisplayPost(props){
         console.error(error);     
         });
     }
-return(<>
+    
+return(<>{/*}
+<div style={showMore?{backGround:'#dcdcdc'}:{backGround:'white'}}></div>
     <td>{post.id}</td>
     <td>{post.title}</td>
     <td ><button onClick={()=>deletePost(post.id)}>🗑️</button></td>
-     </>)
+    <UpdatePost />
+*/} </>)
 }
 export default DisplayPost

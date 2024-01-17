@@ -1,5 +1,7 @@
 import React from "react";
-function UpdatePost()
+function UpdatePost({})
 {
-return(<></>)
+return(<>
+<button onClick={()=>setInUpdate}>🖋</button>
+{inUpdate&&<button onClick={UpdatePost()}>✔</button>}</>)
 }export default UpdatePost

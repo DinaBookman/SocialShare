@@ -39,11 +39,8 @@ function RegisterForm(props){
                 body: JSON.stringify(newUser)
             };
         fetch('http://localhost:3000/users', requestOptions)
-                
-        let userArr=[];
-        userArr.push(newUser)
-        localStorage.setItem("User" ,[JSON.stringify(userArr)])
-        navigate("/home")
+        localStorage.setItem("User" ,[JSON.stringify(newUser)])
+        navigate(`/users/${newUser.id}/home`)
     }
 
    

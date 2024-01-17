@@ -1,22 +1,15 @@
  import React,{useEffect,useState} from "react";
- import { useNavigate,useLocation,useParams } from "react-router-dom";
-  
+ import { useNavigate,useLocation,useParams } from "react-router-dom"
 
- 
-  // Access the 'id' parameter from the URL
-  
-function AddTodo(props){
-    /*const navigate=useNavigate()
-    const location=useLocation()
-    const  {state}=location ;
-    const { allTodosData,todosData,setAllTodosData,setTodosData}= state;*/
+  function AddTodo(props){
+     
     const { userId } = useParams();
-    const { allTodos,todosData,setAllTodos,setTodosData,setIsAdding}=props;
+    const { todosData,setTodosData,setIsAdding}=props;
     
      
  
         
-        let id;
+    let id;
     async function  addTodo(event) {
     event.preventDefault()
     const response = await fetch("http://localhost:3000/nextID");

@@ -1,32 +1,27 @@
-import React from "react";
+import React,{useState} from "react";
 import DisplayTodo from "./DisplayTodo";
 function TodosDisplay(props){
-  const { allTodos,todosData,setAllTodos,setTodosData }= props;
+  const {todosData ,setTodosData }= props;
   let  list = [...todosData];
+  const [filter,setFilter]=useState("All")
+  const [title,setTitle]=useState('')
+  const [id,setId]=useState('')
   
-  /*function checkChange(event) {
-    const  Id = event.target.id;
-    const isChecked = event.target.checked;
-    console.log(event.target.value)
-    console.log(event.target.value)
-    console.log(event.current)
-      // Simple PUT request with a JSON body using fetch
-      const requestOptions = {
-          method: 'PUT',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ completed: checkboxId })
-      };
-      fetch(`http://localhost:3000/todos/${Id}`, requestOptions)
-          .then(response => response.json())
-          .then(data => this.setState({ postId: data.id }));
-  
-    const updatedTodos = todosData.map(todo => {
-        if (todo.id === id) {
-            return { ...todo, completed: !todo.completed };
+       function isFiltered(todo){
+         switch(filter){
+            case"All":
+            return true
+            case "ID":
+                 return(todo.id.includes(id))? true:false;
+            case "Title":
+                 return(todo.title.includes(title))?true:false
+            case "Completed":
+                 return(todo.completed)
+            case "UnCompleted":
+                return(!todo.completed)
         }
-        return todo;
-    });
-  }*/
+    }
+  
   const handleOrder = (event) => {
     switch (event.target.value) {
         case "random":
@@ -65,24 +60,23 @@ function TodosDisplay(props){
 }
 return(
   <>{showSelect()}
-  <table>
-  <thead>
-    <tr><th>UserID</th>
-    <th>id</th>
-    <th>Titles</th> 
-    <th>Completed</th>
-    <th>Delete</th></tr>
-  
-  </thead>
-<tbody>
-{todosData.map((todo) => (
-                <tr key={todo.id} >
-                    {<DisplayTodo  todo={todo} setTodosData={setTodosData} todosData={todosData} allTodos={allTodos} setAllTodos={setAllTodos}/>}
-                </tr>
-            ))}
+  {todosData.map((todo) => isFiltered(todo) && <DisplayTodo  todo={todo} setTodosData={setTodosData} todosData={todosData}/>)}
 
-</tbody>
-</table></>
+ 
+ 
+<select name="filter by" id="filter" value={filter} onChange={(event)=>setFilter(event.target.value)}>
+                    <option value="All">All</option>
+                    <option value="ID">ID</option>
+                    <option value="Completed">Completed</option>
+                    <option value="UnCompleted">UnCompleted</option>
+                </select>
+    { filter==='Title'&&
+      <>  <label>Enter wanted Title</label>
+        <input type="text" value={title} onChange={(event)=>setTitle(event.target.value)}></input></>}
+        { filter==='ID'&&
+      <>  <label>Enter wanted Id</label>
+        <input type="number" value={id} onChange={(event)=>setId(event.target.value)}></input></>}</>
+
          )}
     
  

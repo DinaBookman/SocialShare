@@ -1,29 +1,33 @@
 import React from "react";
+import DeleteTodo from "./DeleteTodo";
+import UpdateTodo  from "./UpdateTodo"
 function DisplayTodo(props){
-    const {todo,todosData,allTodos,setAllTodos,setTodosData}=props;
-    function deleteTodo(ID) 
-    {   
-        fetch(`http://localhost:3000/todos/${ID}`, {
-        method: 'DELETE',
+    const {todo,todosData,setTodosData}=props;
+    
+ const updateTodo={...todo,"completed:":!todo.Completed}
+    function checkChange() {
+        fetch(`http://localhost:3000/todos/${todo.id}`, {
+        method: "PATCH",
+        body: JSON.stringify({
+            "Completed": !todo.completed 
+        }),
         headers: {
-        'Content-Type': 'application/json',
-        }}).then(response => {
-        if (!response.ok) {
-            throw new Error(`Request failed with status: ${response.status}`);
-        }
-            setTodosData(todosData.filter(todo => todo.id !== ID) );
-            setAllTodos(allTodos.filter(todo => todo.id !== ID))
-        }).catch(error => {
-        console.error(error);     
-        });
-    }
+            "Content-type": "application/json; charset=UTF-8",
+        },
+    })
+        .then((response) => response.json())
+        .then((json) => console.log(json));
+        setTodosData(todosData.map((prevTodo)=>(prevTodo.id==todo.id)?updateTodo:prevTodo))
+    };
+  
      
 return(<>
-    <td>{todo.userId}</td>
-<td>{todo.id}</td>
-<td>{todo.title}</td>
-<td><input   id={todo.id} checked={todo.completed} type="checkbox" onChange={()=>checkChange()} /></td>
-<td><button  onClick={() => deleteTodo(todo.id)}>🗑️</button></td>
+<strong>userId:</strong>{todo.userId} <br/>
+ <strong>TodoID:</strong>{todo.id} <br/>
+ <strong>Title</strong>{todo.title} <br/>
+ <UpdateTodo todo={todo} setTodosData={setTodosData} todosData={todosData}/><br/> 
+ <DeleteTodo todo={todo} setTodosData={setTodosData} todosData={todosData}/> 
+
      </>)
 }
 export default DisplayTodo
