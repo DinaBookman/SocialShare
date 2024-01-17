@@ -2,7 +2,8 @@ import React,{useState} from "react"
 
 function Filter(props){
 
-    const {filter,postsData,setFitler,setPostsData,userID,allPosts}=props;
+    const {filter,postsData,setFilter,userID}=props;
+    const [filterData,setFilterData]=useState(postsData)
 
     function filterPosts(event){
         console.log(userID)
@@ -10,7 +11,7 @@ function Filter(props){
         let wantedItem=event.target[0].value;
         console.log(wantedItem)
         if(wantedItem==''){
-            setPostsData(allPosts)
+            setFilterData(postsData)
             return;
         }
         switch(filter){
@@ -18,23 +19,24 @@ function Filter(props){
                 fetch(`http://localhost:3000/posts/?userId=${userID}&id=${wantedItem}`)
                 .then(response => (response.json()))
                 .then(response=>{
-                    (setPostsData(response))
-                    // console.log(postsData)
+                    (setFilterData(response))
+                    
                 })
+                break
             case "Title":
                 fetch(`http://localhost:3000/posts/?userId=${userID}&title=${wantedItem}`)
                 .then(response => (response.json()))
                 .then(response=>{
                     console.log(response)
-                    setPostsData(response)
+                    setFilterData(response)
                 })
+                break
+            case "Completed":
+                 setFilterData(postsData.filter((todo)=>todo.completed===true))
+                 break
         }
-        setFitler('')
+        setFilterData('')
     }
-
-
-
-
     return(
         <>
         <form onSubmit={filterPosts}>

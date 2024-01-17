@@ -2,7 +2,7 @@ import React from "react";
 
 function AddNewPost(props){
 
-
+    const { allPosts,postsData,setAllPosts,setPostsData,setIsAdding}=props;
     function addPost(event){
         event.preventDefault();
 
@@ -17,9 +17,13 @@ function AddNewPost(props){
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(newPost)
         };
-        fetch(`http://localhost:3000/posts`, newRequest);
-        console.log(newPost)
-        props.setIsAddNew(false)
+        fetch(`http://localhost:3000/posts`, newRequest)
+        .then(data => {
+            setPostsData([...postsData,newPost]);
+            setAllPosts([...allPosts ,newPost]) ; 
+        })
+        .catch(error => console.error(error));
+         setIsAddNew(false)
     }
 
     return (
