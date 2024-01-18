@@ -1,19 +1,20 @@
-import React from "react";
+import React, { useState } from "react";
+import { useParams } from "react-router-dom"
 
-function AddPost(props){
-    let id;
-    const { postsData,setPostsData,setIsAddNew}=props;
-     
-        async function  addPost(event) {
+function AddPost(props) {
+    const { posts, setPosts } = props;
+    const [isAddNew, setIsAddNew] = useState(false)
+    const { userId } = useParams();
+    async function addPost(event) {
         event.preventDefault()
         const response = await fetch("http://localhost:3000/nextID");
         const json = await response.json();
         const { nextPostId } = json[0];
-         id=nextPostId
-         fetch("http://localhost:3000/nextID/1", {
+
+        fetch("http://localhost:3000/nextID/1", {
             method: "PATCH",
             body: JSON.stringify({
-                "nextPostId": id + 1  
+                "nextPostId": nextPostId + 1
             }),
             headers: {
                 "Content-type": "application/json; charset=UTF-8",
@@ -21,9 +22,9 @@ function AddPost(props){
         })
             .then((response) => response.json())
             .then((json) => console.log(json));
-        let newPost={        
-            "userId": props.userID,
-            "id": id.toString(),
+        let newPost = {
+            "userId": userId,
+            "id": nextPostId.toString(),
             "title": event.target[0].value,
             "body": event.target[1].value
         }
@@ -33,25 +34,24 @@ function AddPost(props){
             body: JSON.stringify(newPost)
         };
         fetch(`http://localhost:3000/posts`, newRequest)
-        .then(data => {
-            setPostsData([...postsData,newPost]);
-            
-        })
-        .catch(error => console.error(error));
-         setIsAddNew(false)
+            .then(data => {
+                setPosts([...posts, newPost]);
+
+            })
+            .catch(error => console.error(error));
+        setIsAddNew(false)
     }
 
     return (
         <>
-        <form onSubmit={addPost}>
-            <label>Enter post title</label>
-            <input type="text" placeholder="title"></input>
-            <label>Enter post body</label>
-            <input type="text" placeholder="body"></input>
-            <button type="submit">add</button>
-        </form>
-        </>
-    )
-}
-
-export default AddPost
+            <button onClick={() => setIsAddNew(true)}>add new post</button>
+            {isAddNew && <AddPost posts={posts} setPosts={setPosts} setIsAddNew={setIsAddNew} />}
+            {isAddNew && <form onSubmit={addPost}>
+                <label>Enter post title</label>
+                <input type="text" placeholder="title"></input>
+                <label>Enter post body</label>
+                <input type="text" placeholder="body"></input>
+                <button type="submit">add</button>
+            </form>}
+        </>)
+} export default AddPost

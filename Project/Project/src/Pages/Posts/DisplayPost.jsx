@@ -1,29 +1,25 @@
-import React,{useState} from "react";
+import React, { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
 import UpdatePost from "./UpdatePost";
 import DeletePost from "./DeletePost";
 import Comments from './Comments/Comments'
-import { useEffect } from "react";
-function DisplayPost(props){
-    const {post,postsData,setPostsData}=props;
-     const [showMore,setShowMore]=useState(false);
-     const [showComments,setShowComments]=useState(false)
-     const [updateTitle,setUpdatedTitle]=useState(post.title)
-     const [updatedBody,setUpdatedBody]=useState(post.body)
-     const [inUpdate,setInUpdated]=useState(false);
-    
-    useEffect(()=>{
-    setUpdatedBody(post.body)
-    setUpdatedTitle(post.Title)},[inUpdate]
-    );
-return(<>
-<div style={showMore?{backGround:'#dcdcdc'}:{backGround:'white'}}></div>
-    <td>{post.id}</td>
-    <td>{post.title}</td>
-    <td ><DeletePost post={post} postData={postsData} setPostsData={setPostsData} /></td>
-   
-    <UpdatePost post={post} postData={postsData} setPostsData={setPostsData}/>
-    {showMore&&<button style={{backgroundColor: showComments}}></button>}
-    {showMore&&showComments&&<Comments postId={post.id}/>}
+function DisplayPost(props) {
+    const { post, posts, setPosts } = props;
+    const [showMore, setShowMore] = useState(false);
+    const [showComments, setShowComments] = useState(false)
+    return (<>
+        <div style={showMore ? { backgroundColor: '#dcdcdc' } : { backgroundColor: 'white' }}>
+
+            <strong>TodoID:</strong>{post.id} <br />
+            <strong>Title</strong>{post.title} <br />
+
+
+            {showMore && <><strong>Body: </strong>{post.body} <br /></>}
+            <DeletePost post={post} posts={posts} setPosts={setPosts} />
+            <UpdatePost post={post} posts={posts} setPosts={setPosts} />
+            {showMore ? <button onClick={(() => setShowMore(false))}>➖</button> : <button onClick={(() => setShowMore(true))}>➕</button>}
+
+            {showMore && showComments && <Comments postId={post.id} />}</div>
     </>)
 }
 export default DisplayPost

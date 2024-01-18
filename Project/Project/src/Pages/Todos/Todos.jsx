@@ -1,36 +1,22 @@
-import React,{useEffect,useState} from "react";
+import React, { useEffect, useState } from "react";
+import {useParams } from "react-router-dom"
 import TodosDisplay from "./TodosDisplay";
-import { useNavigate } from "react-router-dom";
 import AddTodo from "./AddTodo";
+
 function Todos(){
-    const navigate= useNavigate();
-    const [todosData, setTodosData]=useState([]);
-    const [isAdding,setIsAdding]=useState(false)
-    let user=JSON.parse(localStorage.getItem("User")) 
-      
-    
-      const handleAddTodo = () => {
-          setIsAdding(true)
-      };
-     
-    useEffect(()=>{ 
-        fetch(`http://localhost:3000/todos/?userId=${user.id}`)
-        .then(response => (response.json()))
-        .then(res=> (setTodosData(res)))
-        .catch(err=>console.log(err));
-       },[])
+    const [todos, setTodos] = useState([]);
+    const { userId } = useParams();
 
-       
-    
- 
-return( <>
-<button onClick={()=>navigate("/home")}>Back</button>
+    useEffect(() => {
+        fetch(`http://localhost:3000/todos/?userId=${userId}`)
+            .then(response => (response.json()))
+            .then(res => (setTodos(res)))
+            .catch(err => console.log(err));
+    }, [])
 
- <TodosDisplay   setTodosData={setTodosData} todosData={todosData} />
-<button onClick={handleAddTodo}>Add ToDo</button>
- {isAdding &&<AddTodo setIsAdding={setIsAdding} todosData={todosData}   setTodosData={setTodosData}/>}
-    </>
-    )
-}
+    return (<>
+        <AddTodo todos={todos} setTodos={setTodos} />
+        <TodosDisplay setTodos={setTodos} todos={todos} />
+    </>)
+} export default Todos
 
-export default Todos

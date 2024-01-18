@@ -1,44 +1,28 @@
- import React,{useEffect,useState} from "react";
- import { useNavigate,useLocation,useParams } from "react-router-dom"
+import React, { useState } from "react";
+import { useParams } from "react-router-dom"
 
-  function AddTodo(props){
-     
+function AddTodo(props) {
     const { userId } = useParams();
-    const { todosData,setTodosData,setIsAdding}=props;
-    
-     
- 
-        
-    let id;
-    async function  addTodo(event) {
-    event.preventDefault()
-    const response = await fetch("http://localhost:3000/nextID");
-    const json = await response.json();
-    const { nextTodoId } = json[0];
-    console.log(nextTodoId);
-     id=nextTodoId
-    console.log(id)
-            
-    fetch("http://localhost:3000/nextID/1", {
-        method: "PATCH",
-        body: JSON.stringify({
-            "nextTodoId": id + 1  
-        }),
-        headers: {
-            "Content-type": "application/json; charset=UTF-8",
-        },
-    })
-        .then((response) => response.json())
-        .then((json) => console.log(json));
-        
-         
+    const { todos, setTodos } = props;
+    const [isAdding, setIsAdding] = useState(false)
+
+    async function addTodo(event) {
+        event.preventDefault()
+        const response = await fetch("http://localhost:3000/nextID");
+        const json = await response.json();
+        const { nextTodoId } = json[0];
+        fetch("http://localhost:3000/nextID/1", {
+            method: "PATCH",
+            body: JSON.stringify({ "nextTodoId": nextTodoId + 1 }),
+            headers: { "Content-type": "application/json; charset=UTF-8", },
+        })
+            .then((response) => response.json())
         let newTodo = {
             "userId": userId,
-            "id": id.toString(),  
+            "id": nextTodoId.toString(),
             "title": event.target[0].value,
             "completed": false
         }
-        console.log(newTodo)
         const requestOptions = {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
@@ -46,16 +30,15 @@
         }
         fetch('http://localhost:3000/todos', requestOptions)
             .then(data => {
-                setTodosData([...todosData,newTodo]);
-                setAllTodos([...allTodos ,newTodo])  
+                setTodos([...todos, newTodo]);
+                setIsAdding(false)
             })
             .catch(error => console.error(error));
-            setIsAdding(false)
-        
     }
-    return(<><form onSubmit={addTodo}><h3>Add Title</h3>
-    <input type="text"></input>
-      <button type="submit">Add</button></form>
-      <button onClick={()=>navigate("/")}>Back</button></>)
-}
-export default AddTodo
+    
+    return (<>
+        <button onClick={() => setIsAdding(true)}>Add ToDo</button>
+        {isAdding && <form onSubmit={addTodo}><h3>Add Title</h3>
+        <input type="text"></input>
+        <button type="submit">Add</button></form>}</>)
+} export default AddTodo

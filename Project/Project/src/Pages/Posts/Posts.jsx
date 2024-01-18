@@ -1,50 +1,22 @@
 import PostsDisplay from "./PostsDisplay";
-import { useNavigate } from "react-router-dom";
-import React,{useState, useEffect} from "react"
+import React, { useState, useEffect } from "react"
+import { useParams } from "react-router-dom"
 import AddPost from "./AddPost";
- 
 
-function Posts(){
-    const navigate= useNavigate();
-    const [postsData, setPostsData]=useState([])
-    const [isAddNew, setIsAddNew]=useState(false)
+function Posts() {
+    const [posts, setPosts] = useState([])
+    const { userId } = useParams();
 
-    let user=JSON.parse(localStorage.getItem("User")); 
-     console.log(user)
+    useEffect(() => {
+        fetch(`http://localhost:3000/posts/?userId=${userId}`)
+            .then(response => (response.json()))
+            .then(response => { (setPosts(response)) })
+            .catch(err => console.log("err"));
+    }, [])
 
-    useEffect(()=>{ 
-        fetch(`http://localhost:3000/posts/?userId=${user.id}`)
-        .then(response => (response.json()))
-        .then(response=> {(setPostsData(response))
-                setAllPosts([...response])
-                console.log(response)
-        })
-        .catch(err=>console.log("err"));
-    },[])
-
-
-
-     
-
-    function addPost(){
-        setIsAddNew(true)
-    }
-
-
-    
-
-
-       return( 
-        <>
-        <button onClick={()=>navigate("/home")}>Back</button>
-            <h1>Posts</h1>
-            <PostsDisplay setPostsData={setPostsData} postsData={postsData}/>
-            <button onClick={addPost}>add new post</button>
-            {isAddNew && <AddPost postsData={postsData} setPostsData={setPostsData}  setIsAddNew={setIsAddNew} userID={user.id}/>}
-            
-        </>
-    )
-}
-
-
-export default Posts
+    return (<>
+        <h1>Posts</h1>
+        <AddPost posts={posts} setPosts={setPosts} />
+        <PostsDisplay setPosts={setPosts} posts={posts} />
+    </>)
+} export default Posts

@@ -16,7 +16,7 @@ import { useNavigate ,Outlet, NavLink,useParams} from "react-router-dom";
     useEffect(()=>{{(currentUser===null||currentUser.id!=userId) && navigate("/") };},[currentUser])
 
  return(<>
-         <h1>Home!!</h1>
+         <h1>Welcome {currentUser.name}</h1>
          <NavLink onClick={()=>logOut()}>LogOut</NavLink><br/>
          <NavLink to="info">Info</NavLink><br/>
          <NavLink to="posts">Posts</NavLink><br/>
