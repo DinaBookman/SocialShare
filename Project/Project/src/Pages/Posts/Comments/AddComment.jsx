@@ -1,20 +1,19 @@
 import React, { useState } from "react";
-import { useParams } from "react-router-dom"
 
-function AddPost(props) {
-    const { posts, setPosts } = props;
+function AddComment(props) {
+    const { comments, setComments ,postId} = props;
     const [isAddNew, setIsAddNew] = useState(false)
-    const { userId } = useParams();
-    async function addPost(event) {
+    let user=JSON.parse(localStorage.getItem("User"));
+    async function addComment(event) {
         event.preventDefault()
         const response = await fetch("http://localhost:3000/nextID");
         const json = await response.json();
-        const { nextPostId } = json[0];
-
+        const { nextCommentId } = json[0];
+        console.log(postId)
         fetch("http://localhost:3000/nextID/1", {
             method: "PATCH",
             body: JSON.stringify({
-                "nextPostId": nextPostId + 1
+                "nextCommentId": nextCommentId + 1
             }),
             headers: {
                 "Content-type": "application/json; charset=UTF-8",
@@ -22,21 +21,23 @@ function AddPost(props) {
         })
             .then((response) => response.json())
             .then((json) => console.log(json));
-        let newPost = {
-            "userId": userId,
-            "id": nextPostId,
-            "title": event.target[0].value,
+
+        let newComment = {
+            "postId": postId,
+            "id": nextCommentId.toString(),
+            "name":event.target[0].value,
+            "email":user.email,
             "body": event.target[1].value
         }
         const newRequest = {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(newPost)
+            body: JSON.stringify(newComment)
         };
-        fetch(`http://localhost:3000/posts`, newRequest)
+        fetch(`http://localhost:3000/comments`, newRequest)
             .then(data => {
-                setPosts([...posts, newPost]);
-
+                console.log(newComment)
+                setComments([...comments, newComment]);
             })
             .catch(error => console.error(error));
         setIsAddNew(false)
@@ -44,13 +45,13 @@ function AddPost(props) {
 
     return (
         <>
-            <button onClick={() => setIsAddNew(true)}>add new post</button>
-            {isAddNew && <form onSubmit={addPost}>
-                <label>Enter post title</label>
+            <button onClick={() => setIsAddNew(true)}>add a comment...</button>
+            {isAddNew && <form onSubmit={addComment}>
+                <label>Enter comment's name:</label>
                 <input type="text" placeholder="title"></input>
-                <label>Enter post body</label>
+                <label>Enter comment</label>
                 <input type="text" placeholder="body"></input>
                 <button type="submit">✔</button>
             </form>}
         </>)
-} export default AddPost
+} export default AddComment

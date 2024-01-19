@@ -35,10 +35,10 @@ function AddTodo(props) {
             })
             .catch(error => console.error(error));
     }
-    
+
     return (<>
         <button onClick={() => setIsAdding(true)}>Add ToDo</button>
         {isAdding && <form onSubmit={addTodo}><h3>Add Title</h3>
         <input type="text"></input>
-        <button type="submit">Add</button></form>}</>)
+        <button type="submit">✔</button></form>}</>)
 } export default AddTodo

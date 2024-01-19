@@ -23,11 +23,11 @@ function App() {
           <Route path="login" element={<Login />} />
           <Route path="register" element={<Register />} />
           <Route path="users/:userId/home" element={<Home />}>
-            <Route path='todos' element={<Todos/>}/>
-            <Route path='posts' element={<Posts/>}/>
-            <Route path='info' element={<Info/>}/>
+            <Route path='todos' element={<Todos />} />
+            <Route path='posts' element={<Posts />}/>
+            <Route path='info' element={<Info />} />
           </Route>
-        <Route path="*" element={<NoPage />} />
+          <Route path="*" element={<NoPage />} />
         </Routes>
       </BrowserRouter>
     </>

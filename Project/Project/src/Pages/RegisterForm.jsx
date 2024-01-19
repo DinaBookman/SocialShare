@@ -7,8 +7,6 @@ function RegisterForm(props){
 
     function confirmRegistration(event){
         event.preventDefault();
-        console.log(userName)
-        console.log(password)
         let newUser={
             "id":event.target[0].value,
             "name": event.target[1].value,

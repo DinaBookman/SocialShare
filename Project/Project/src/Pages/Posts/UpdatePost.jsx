@@ -33,19 +33,8 @@ function UpdatePost(props) {
             },
         })
             .then((response) => response.json())
-            .then((json) => console.log(json));
-        fetch(`http://localhost:3000/posts/${post.id}`, {
-            method: 'PUT',
-            headers: { 'Content-Type': 'application/json', },
-            body: JSON.stringify({ "userId": userId, ...updatedPost }),
-        })
-            .then(response => {
-                if (!response.ok) {
-                    console.log(response.status)
-                    return
-                }
-                setPosts(posts.map((post1) => post1.id === post.id ? updatedPost : post1));
-            })
+             setPosts(posts.map((post1) => post1.id === post.id ? updatedPost : post1));
+            
     }
 
     return (<>

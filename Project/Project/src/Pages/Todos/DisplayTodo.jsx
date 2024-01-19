@@ -9,7 +9,7 @@ function DisplayTodo(props) {
         <strong>userId:</strong>{todo.userId} <br />
         <strong>TodoID:</strong>{todo.id} <br />
         <strong>Title: </strong>{todo.title} <br />
-        <UpdateTodo todo={todo} setTodos={setTodos} todos={todos} /><br />
+        <UpdateTodo todo={todo} setTodos={setTodos} todos={todos} />
         <DeleteTodo todo={todo} setTodos={setTodos} todos={todos} />
     </>)
 }

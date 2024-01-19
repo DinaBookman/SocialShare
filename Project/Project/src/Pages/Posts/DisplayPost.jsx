@@ -10,16 +10,14 @@ function DisplayPost(props) {
     return (<>
         <div style={showMore ? { backgroundColor: '#dcdcdc' } : { backgroundColor: 'white' }}>
 
-            <strong>TodoID:</strong>{post.id} <br />
+            <strong>post ID:</strong>{post.id} <br />
             <strong>Title</strong>{post.title} <br />
-
-
             {showMore && <><strong>Body: </strong>{post.body} <br /></>}
             <DeletePost post={post} posts={posts} setPosts={setPosts} />
             <UpdatePost post={post} posts={posts} setPosts={setPosts} />
             {showMore ? <button onClick={(() => setShowMore(false))}>➖</button> : <button onClick={(() => setShowMore(true))}>➕</button>}
-
-            {showMore && showComments && <Comments postId={post.id} />}</div>
+            {showMore&&<button onClick={(()=>setShowComments(!showComments))}>💬</button>}
+            {showComments&& showMore && <Comments postId={post.id}/>}</div>
     </>)
 }
 export default DisplayPost

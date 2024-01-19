@@ -28,10 +28,9 @@ function PostsDisplay(props) {
       <option value="Body">Body</option>
     </select>
   }
-
-  return (<>
-    {showSelectFilter()}
-    {filter === 'Title' &&
+const showFilterInputs=()=>{
+  return(<>
+  {filter === 'Title' &&
       <>  <label>Enter wanted Title</label>
         <input type="text" value={title} onChange={(event) => setTitle(event.target.value)}></input></>}
     {filter === 'ID' &&
@@ -40,6 +39,11 @@ function PostsDisplay(props) {
     {filter === 'Body' &&
       <>  <label>Enter wanted Body</label>
         <input type="text" value={body} onChange={(event) => setBody(event.target.value)}></input></>}
+        </>)
+}
+  return (<>
+    {showSelectFilter()}
+    {showFilterInputs()}
     {posts.map((post) => (isFiltered(post) && <div key={post.id}><DisplayPost post={post} setPosts={setPosts} posts={posts} /></div>))}
   </>)
 } export default PostsDisplay
