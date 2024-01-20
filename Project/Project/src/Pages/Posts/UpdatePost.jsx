@@ -5,7 +5,6 @@ function UpdatePost(props) {
     const [updatedTitle, setUpdatedTitle] = useState(post.title)
     const [updatedBody, setUpdatedBody] = useState(post.body)
     const [inUpdate, setInUpdate] = useState(false);
-    const { userId } = useParams();
     useEffect(() => {
         setUpdatedBody(updatedBody)
         setUpdatedTitle(updatedTitle)

@@ -23,7 +23,7 @@ function AddComment(props) {
             .then((json) => console.log(json));
 
         let newComment = {
-            "postId": postId,
+            "postId": postId.toString(),
             "id": nextCommentId.toString(),
             "name":event.target[0].value,
             "email":user.email,

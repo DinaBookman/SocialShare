@@ -3,11 +3,11 @@
     {
       "id": "1",
       "nextUserId": 15,
-      "nextPostId": 502,
+      "nextPostId": 503,
       "nextAlbumId": 101,
       "nextTodoId": 226,
-      "nextCommentId": 511,
-      "nextPhotoId": 1001
+      "nextCommentId": 512,
+      "nextPhotoId": 1002
     }
   ],
   "users": [
@@ -37524,6 +37524,12 @@
       "userId": "1",
       "title": "Sara",
       "body": "Rivka"
+    },
+    {
+      "id": 502,
+      "userId": "1",
+      "title": "dina",
+      "body": "grossssssssss"
     }
   ],
   "comments": [
@@ -41059,6 +41065,13 @@
       "name": "Yay",
       "email": "Sincere@april.biz",
       "body": "What Even?"
+    },
+    {
+      "id": "511",
+      "postId": 502,
+      "name": "yeah...",
+      "email": "Sincere@april.biz",
+      "body": "great comment"
     }
   ]
 }
