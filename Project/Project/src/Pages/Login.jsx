@@ -14,9 +14,13 @@ import { useNavigate } from "react-router-dom";
             response.length==0?alert("No such user. Please register"): successLogin(response)
         })
     }
-
+    
     function successLogin(response){
-        localStorage.setItem("User" , JSON.stringify(response[0]));
+        let localUser={
+            "id": response[0].id,
+            "name": response[0].name,
+    }
+        localStorage.setItem("User" , JSON.stringify(localUser));
         navigate(`/users/${response[0].id}/home`)
     }
     

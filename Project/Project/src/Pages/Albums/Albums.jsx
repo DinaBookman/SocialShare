@@ -15,7 +15,7 @@ function Album(){
     }, [])
 
     return (<>
-        <AddAlbum albuma={albums} setAlbumA={setAlbums} />
+        <AddAlbum albums={albums} setAlbums={setAlbums} />
         <AlbumsDisplay setAlbums={setAlbums} albums={albums} />
     </>)
 } export default Album

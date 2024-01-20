@@ -30,14 +30,17 @@ function RegisterForm(props){
               "bs": event.target[12].value
             }
           }
-        
+        let localUser={
+          "id":event.target[0].value,
+            "name": event.target[1].value,
+ }
         const requestOptions = {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(newUser)
             };
         fetch('http://localhost:3000/users', requestOptions)
-        localStorage.setItem("User" ,[JSON.stringify(newUser)])
+        localStorage.setItem("User" ,[JSON.stringify(localUser)])
         navigate(`/users/${newUser.id}/home`)
     }
 

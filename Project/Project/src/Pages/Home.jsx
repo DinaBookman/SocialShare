@@ -8,8 +8,8 @@ import { useNavigate ,Outlet, NavLink,useParams} from "react-router-dom";
    const {userId}=useParams()
 
     const logOut=()=>{
-        setCurrentUser(null)
         navigate("/");
+        setCurrentUser(null)
         localStorage.clear; 
         
     }

@@ -1,9 +1,24 @@
- import React  from "react";
-import { useNavigate  } from "react-router-dom";
+ import React ,{useEffect, useState} from "react";
+ import { useParams } from "react-router-dom"
 function Info(){
-    let user=JSON.parse(localStorage.getItem("User")); 
+    const { userId } = useParams();
+     const [user,setUser]=useState(null)
+     useEffect(() => {
+        fetch(`http://localhost:3000/users/?id=${userId}`)
+          .then(response => response.json())
+          .then(data => {
+            if (data && data.length > 0) {
+              setUser(data[0]);
+            } else {
+              console.log("User not found");
+            }
+          })
+          .catch(err => console.log(err));
+      }, [userId]);
+     
     return(<>
-    <form>
+    {user &&<form>
+
                 <p>ID: {user.id}</p>
                 <p>Name: {user.name}</p>
                 <p>User Name: {user.username}</p>
@@ -17,12 +32,10 @@ function Info(){
                 <p>Lat: {user.address.geo.lat}</p>
                 <p>Lng: {user.address.geo.lng}</p>
                 <p>Phone: {user.phone}</p>
-                <p>website: {user.website}</p>
                 <p>Company:</p>
                 <p>Name: {user.company.name}</p>
                 <p>CatchPhrase: {user.company.catchPhrase}</p>
                 <p>Bs: {user.company.bs}</p>
-            </form>
-            <button onClick={()=>navigate("/home")}>Back</button></>)
+            </form>}</>)
 }
 export default Info

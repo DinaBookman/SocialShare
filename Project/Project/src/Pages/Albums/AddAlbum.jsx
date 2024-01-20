@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import { useParams } from "react-router-dom"
 
 function AddAlbum(props) {
-    const { userId } = useParams();
-    const { albums, setAlbums } = props;
+    const {userId } = useParams();
+    const {albums, setAlbums } = props;
     const [isAdding, setIsAdding] = useState(false)
 
     async function addAlbum(event) {

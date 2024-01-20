@@ -21,8 +21,8 @@ function AddPhoto(props) {
             "albumId": albumId,
             "id": nextPhotoId.toString(),
             "title": event.target[0].value,
-            "url": event.target[0].value,
-            "thumbnailUrl": event.target[0].value.stringify().replace('/600/', '/150/')
+            "url": event.target[1].value.toString(),
+            "thumbnailUrl": event.target[1].value.toString().replace('/600/', '/150/')
         }
         const requestOptions = {
             method: 'POST',
