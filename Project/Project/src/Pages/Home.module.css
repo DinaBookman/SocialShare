@@ -1,0 +1,13 @@
+.btn{
+    color: green;
+    font-family: papyrus;
+    font-size: 40px;
+    margin: 2%;
+    padding: 2%;
+}
+
+.allBtns{
+    display: flex;
+    justify-content: space-around;
+    margin: 25px;
+}

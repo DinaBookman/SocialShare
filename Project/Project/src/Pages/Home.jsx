@@ -1,5 +1,6 @@
  import React,{useEffect, useState} from "react";
 import { useNavigate ,Outlet, NavLink,useParams} from "react-router-dom";
+import style from './Home.module.css'
  
  
  function Home(){
@@ -17,11 +18,13 @@ import { useNavigate ,Outlet, NavLink,useParams} from "react-router-dom";
 
  return(<>
          <h1>Welcome {currentUser.name}</h1>
-         <NavLink onClick={()=>logOut()}>LogOut</NavLink><br/>
-         <NavLink to="info">Info</NavLink><br/>
-         <NavLink to="posts">Posts</NavLink><br/>
-         <NavLink to="todos">Todos</NavLink><br/>
-         <NavLink to="albums">Albums</NavLink><br/>
+         <div className={style.allBtns}>
+         <NavLink className={style.btn} onClick={()=>logOut()}>LogOut</NavLink><br/>
+         <NavLink className={style.btn} to="info">Info</NavLink><br/>
+         <NavLink className={style.btn} to="posts">Posts</NavLink><br/>
+         <NavLink className={style.btn} to="todos">Todos</NavLink><br/>
+         <NavLink className={style.btn} to="albums">Albums</NavLink><br/>
+         </div>
          <Outlet/>
         </>) 
   };
