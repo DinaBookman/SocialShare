@@ -17,7 +17,7 @@ function Info(){
       }, [userId]);
      
     return(<>
-    {user &&<form>
+    {user &&<div><form>
 
                 <p>ID: {user.id}</p>
                 <p>Name: {user.name}</p>
@@ -36,6 +36,6 @@ function Info(){
                 <p>Name: {user.company.name}</p>
                 <p>CatchPhrase: {user.company.catchPhrase}</p>
                 <p>Bs: {user.company.bs}</p>
-            </form>}</>)
+            </form></div>}</>)
 }
 export default Info

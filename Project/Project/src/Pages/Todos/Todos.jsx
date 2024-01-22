@@ -15,6 +15,7 @@ function Todos(){
     }, [])
 
     return (<>
+         <h1>Todos</h1>
         <AddTodo todos={todos} setTodos={setTodos} />
         <TodosDisplay setTodos={setTodos} todos={todos} />
     </>)

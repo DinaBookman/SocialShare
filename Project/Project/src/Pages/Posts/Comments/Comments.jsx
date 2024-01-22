@@ -16,6 +16,7 @@ function Comments(props){
 
     return (<>
         <br/><AddComment comments={comments} setComments={setComments} postId={postId}/>
+        <h3>Comments</h3>
         <CommentsDisplay setComments={setComments} comments={comments}/>
     </>)
 } export default Comments

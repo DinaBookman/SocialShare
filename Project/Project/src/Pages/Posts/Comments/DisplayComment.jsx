@@ -16,7 +16,7 @@ function DisplayComments(props) {
     return (<>
         <strong>comment name: </strong>{comment.name} <br />
         <strong>comment: </strong>{comment.body} <br />
-        {isUsers() && <><UpdateComment comment={comment} setComments={setComments} comments={comments} /><br />
+        {isUsers() && <><UpdateComment comment={comment} setComments={setComments} comments={comments} />
         <DeleteComment comment={comment} setComments={setComments} comments={comments} /></>}
     </>)
 }

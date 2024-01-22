@@ -1,13 +1,16 @@
 .btn{
-    color: green;
+    color: rgb(60, 84, 158);
     font-family: papyrus;
     font-size: 40px;
     margin: 2%;
     padding: 2%;
 }
-
+.btn:hover{
+    color: rgba(60, 85, 158, 0.53);
+}
 .allBtns{
     display: flex;
     justify-content: space-around;
     margin: 25px;
 }
+ 

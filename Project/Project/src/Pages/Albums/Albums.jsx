@@ -15,6 +15,7 @@ function Album(){
     }, [])
 
     return (<>
+         <h1>Albums</h1>
         <AddAlbum albums={albums} setAlbums={setAlbums} />
         <AlbumsDisplay setAlbums={setAlbums} albums={albums} />
     </>)

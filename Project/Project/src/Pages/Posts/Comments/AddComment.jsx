@@ -46,12 +46,12 @@ function AddComment(props) {
     return (
         <>
             <button onClick={() => setIsAddNew(true)}>add a comment...</button>
-            {isAddNew && <form onSubmit={addComment}>
+            {isAddNew && <div><form onSubmit={addComment}>
                 <label>Enter comment's name:</label>
                 <input type="text" placeholder="Enter title..."></input><br/>
                 <label>Enter comment</label>
                 <input type="text" placeholder="Enter body..."></input><br/>
                 <button type="submit">✔</button>
-            </form>}
+            </form></div>}
         </>)
 } export default AddComment

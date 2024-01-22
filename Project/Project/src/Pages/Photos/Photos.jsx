@@ -38,6 +38,7 @@ function Photos(){
     </>)
 } export default Photos
 */}
+
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import PhotosDisplay from "./PhotosDisplay";
@@ -46,13 +47,12 @@ import AddPhoto from "./AddPhoto";
 function Photos() {
     const { albumId } = useParams();
     const [photos, setPhotos] = useState([]);
-    const [start,setStart]=useState(0)
     const limit=8;
     useEffect(() => {
         const fetchData = async () => {
             try {
                 
-                const response = await fetch(`http://localhost:3000/photos?albumId=${albumId}&_start=${start}&_limit=${limit}`);
+                const response = await fetch(`http://localhost:3000/photos?albumId=${albumId}&_start=0&_limit=${limit}`);
                 
                 if (!response.ok) {
                     throw new Error(`HTTP error! Status: ${response.status}`);
@@ -61,20 +61,20 @@ function Photos() {
                 const data = await response.json();
                 setPhotos(data);
                 console.log(data);
-                setStart(prevStart => prevStart + 8);
             } catch (error) {
                 console.error("Error fetching photos:", error);
             }
         };
         fetchData();
-    }, [albumId, limit]);
+    },[]);
     
 
 
     return (
         <>
+            <h1>Photos</h1>
             <AddPhoto photos={photos} setPhotos={setPhotos} />
-            <PhotosDisplay setPhotos={setPhotos} photos={photos} start={start} setStart={setStart} limit={limit}/>
+            <PhotosDisplay setPhotos={setPhotos} photos={photos}  limit={limit}/>
         </>
     );
 }
