@@ -7,7 +7,7 @@
       "nextAlbumId": 106,
       "nextTodoId": 226,
       "nextCommentId": 512,
-      "nextPhotoId": 1006
+      "nextPhotoId": 1007
     }
   ],
   "users": [
@@ -36954,6 +36954,13 @@
       "title": "Dina's Photo",
       "url": "https://via.placeholder.com/600/1b9d08",
       "thumbnailUrl": "https://via.placeholder.com/150/1b9d08"
+    },
+    {
+      "id": "1006",
+      "albumId": "2",
+      "title": "will it?",
+      "url": "https://via.placeholder.com/600/810b14",
+      "thumbnailUrl": "https://via.placeholder.com/150/810b14"
     }
   ],
   "posts": [

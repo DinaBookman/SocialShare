@@ -7,10 +7,10 @@ import { useNavigate ,Outlet, NavLink,useParams} from "react-router-dom";
     const navigate= useNavigate();
    const {userId}=useParams()
 
-    const logOut=()=>{
-        navigate("/");
+    function logOut(){
         setCurrentUser(null)
-        localStorage.clear; 
+        navigate("/")
+        localStorage.clear
         
     }
     useEffect(()=>{{(currentUser===null||currentUser.id!=userId) && navigate("/") };},[currentUser])
