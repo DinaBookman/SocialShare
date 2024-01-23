@@ -58,7 +58,7 @@ nextUserId=userId;
 
    
 
-    return(
+    return(<>
         <form onSubmit={confirmRegistration}>
         <p >Name</p>
         <input type="text" placeholder="Enter your name..." required></input><br/>
@@ -85,8 +85,9 @@ nextUserId=userId;
         <p>Enter bs</p>
         <input type="text" placeholder="Enter company's bs..."></input><br/><div/>
 
-        <button type="submit">Confirm registration</button>
+        <button className={style.confirmRegBtn} type="submit">Confirm registration</button>
         </form>
+        </>
     )
 }
 

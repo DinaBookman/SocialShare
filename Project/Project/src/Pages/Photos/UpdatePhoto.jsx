@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import style from '../Photos/Photo.module.css'
+
 function UpdatePhoto(props) {
     const { photo, photos, setPhotos } = props;
     const [updatedTitle, setUpdatedTitle] = useState(photo.title)
@@ -31,7 +33,7 @@ function UpdatePhoto(props) {
     }
 
     return (<>
-        <button onClick={() => { setInUpdate((prev) => !prev) }}>🖋</button>
+        <button className={style.Btn} onClick={() => { setInUpdate((prev) => !prev) }}>🖋</button>
         {inUpdate && <form onSubmit={updatePhoto}>
             <strong >Title: </strong>
             <input type='text' id='title' value={updatedTitle} onChange={(event) => { setUpdatedTitle(event.target.value) }} required /><br />
