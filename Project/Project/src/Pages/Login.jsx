@@ -17,14 +17,10 @@ import { UserContext } from "../App";
     }
     
     function successLogin(response){
-        setCurrentUser(response[0]);
-        console.log(response[0])
-        let localUser={
-            "id": response[0].id,
-            "name": response[0].name,
-    }
-        localStorage.setItem("User" , JSON.stringify(localUser));
-        navigate(`/users/${response[0].id}/home`)
+        delete response[0]["website"];
+        localStorage.setItem("User" ,[JSON.stringify(response[0])])
+        setCurrentUser(response[0])
+         navigate(`/users/${response[0].id}/home`)
     }
     
     return(<>

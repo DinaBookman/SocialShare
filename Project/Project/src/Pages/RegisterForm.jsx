@@ -50,17 +50,15 @@ function RegisterForm(props){
             }
           }
           
-        let localUser={
-          "id": nextUserId,
-            "name": event.target[0].value,
-        }
-        const requestOptions = {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(newUser)
-            };
+          const requestOptions = {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(newUser)
+        };
         fetch('http://localhost:3000/users', requestOptions)
-        localStorage.setItem("User" ,[JSON.stringify(localUser)])
+      delete newUser["website"];
+        
+    localStorage.setItem("User" ,[JSON.stringify(newUser)])
         setCurrentUser(newUser)
         navigate(`/users/${newUser.id}/home`)
     }
