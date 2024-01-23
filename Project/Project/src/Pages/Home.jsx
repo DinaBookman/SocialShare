@@ -1,12 +1,11 @@
- import React,{useEffect, useState} from "react";
+ import React,{useEffect, useState,useContext} from "react";
 import { useNavigate ,Outlet, NavLink,useParams} from "react-router-dom";
 import style from './Home.module.css'
- 
+import { UserContext } from "../App";
  
  function Home(){
-    const [currentUser,setCurrentUser]=useState(JSON.parse(localStorage.getItem("User")))
+  const {currentUser,setCurrentUser}=useContext(UserContext)
     const navigate= useNavigate();
-   const {userId}=useParams()
     useEffect(() => {
         if (currentUser === null) {
           navigate("/");

@@ -6,23 +6,28 @@ function RegisterForm(props){
   const {setCurrentUser}=useContext(UserContext)
     const navigate= useNavigate();
     const {userName,password}= props;
-    const [userId,setUserId]=useState()
-  useEffect(() => {
-  fetch("http://localhost:3000/nextID")
-  .then(res=>res.json())
-  .then(res =>{
-    setUserId(res[0].nextUserId)})
-    .then(
-  fetch("http://localhost:3000/nextID/1",{
-      method: "PATCH",
-      body: JSON.stringify({ "nextUserId":userId + 1 }),
-      headers: { "Content-type": "application/json; charset=UTF-8", },
-  }))
-}, [])
-    function confirmRegistration(event){
-        event.preventDefault();
+  
+ async function confirmRegistration(event){
+      event.preventDefault();
+      const response = await fetch("http://localhost:3000/nextID");
+      const json = await response.json();
+      const { nextUserId } = json[0];
+
+      fetch("http://localhost:3000/nextID/1", {
+          method: "PATCH",
+          body: JSON.stringify({
+              "nextPostId": nextUserId + 1
+          }),
+          headers: {
+              "Content-type": "application/json; charset=UTF-8",
+          },
+      })
+          .then((response) => response.json())
+          .then((json) => console.log(json));
+        
+         
         let newUser={
-            "id":userId,
+            "id": nextUserId.toString() ,
             "name": event.target[0].value,
             "username":  userName,
             "email": event.target[1].value,
@@ -46,7 +51,7 @@ function RegisterForm(props){
           }
           
         let localUser={
-          "id": userId,
+          "id": nextUserId,
             "name": event.target[0].value,
         }
         const requestOptions = {

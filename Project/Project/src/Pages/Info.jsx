@@ -3,25 +3,24 @@
  import { UserContext}from "../App";
 function Info(){
     const {currentUser}=useContext(UserContext)
+    console.log(currentUser)
     return(<>
+    {currentUser&&
      <div><form>
                 <p>ID: {currentUser.id}</p>
                 <p>Name: {currentUser.name}</p>
-                <p>User Name: {currentUser.username}</p>
-                <p>User Email: {currentUser.email}</p>
-                <p>User Adress:</p>
+                <p>UserName: {currentUser.username}</p>
+                <p>Email: {currentUser.email}</p>
                 <p>street: {currentUser.address.street}</p>
                 <p>Suite: {currentUser.address.suite}</p>
                 <p>City: {currentUser.address.city}</p>
                 <p>Zipcode: {currentUser.address.zipcode}</p>
-                <p>User Geo</p>
-                <p>Lat: {currentUser.address.geo.lat}</p>
-                <p>Lng: {currentUser.address.geo.lng}</p>
+                <p>Geo Lat: {currentUser.address.geo.lat}</p>
+                <p>Geo Lng: {currentUser.address.geo.lng}</p>
                 <p>Phone: {currentUser.phone}</p>
-                <p>Company:</p>
-                <p>Name: {currentUser.company.name}</p>
-                <p>CatchPhrase: {currentUser.company.catchPhrase}</p>
-                <p>Bs: {currentUser.company.bs}</p>
-            </form></div></>)
+                <p>Company's Name: {currentUser.company.name}</p>
+                <p>Company's CatchPhrase: {currentUser.company.catchPhrase}</p>
+                <p>Company's Bs: {currentUser.company.bs}</p>
+            </form></div>}</>)
 }
 export default Info
