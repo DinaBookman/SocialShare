@@ -35,6 +35,7 @@ import { Link } from "react-router-dom";
             <input id="password" type="password" placeholder="Enter Pasword" required></input><br/>
             <p >verify password</p>
             <input type="password" placeholder="verify Pasword" required></input><br/><div/>
+          
             <button type="submit">Register</button>
         </form>
         <h3>To Login click </h3>

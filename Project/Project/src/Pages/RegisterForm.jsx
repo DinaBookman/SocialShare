@@ -1,5 +1,7 @@
  import { useNavigate } from "react-router-dom";
 import React,{useEffect} from "react";
+ 
+
 function RegisterForm(props){
     const navigate= useNavigate();
     const {userName,password}= props;
@@ -41,10 +43,11 @@ nextUserId=userId;
               "bs": event.target[11].value
             }
           }
+          
         let localUser={
           "id":event.target[0].value,
             "name": event.target[1].value,
- }
+        }
         const requestOptions = {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
@@ -55,9 +58,7 @@ nextUserId=userId;
         navigate(`/users/${newUser.id}/home`)
     }
 
-   
-
-    return(
+       return(
         <form onSubmit={confirmRegistration}>
         <p >Name</p>
         <input type="text" placeholder="Enter your name..." required></input><br/>
@@ -88,5 +89,6 @@ nextUserId=userId;
         </form>
     )
 }
+  
 
 export default RegisterForm
