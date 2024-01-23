@@ -18,7 +18,7 @@ import { Link } from "react-router-dom";
             alert("The verified password does not match the password")
             return;
         }
-        fetch(`http://localhost:3000/users/?username=${_userName}`,)
+        fetch(`http://localhost:3000/users/?username=${_userName}`)
             .then(response => response.json())
             .then(response=>
                 response.length!=0?alert("UserName already exists."):setContinueReg(true))

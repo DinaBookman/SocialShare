@@ -2,7 +2,7 @@
   "nextID": [
     {
       "id": "1",
-      "nextUserId":20,
+      "nextUserId": null,
       "nextPostId": 505,
       "nextAlbumId": 106,
       "nextTodoId": 229,
