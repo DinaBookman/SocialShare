@@ -12,5 +12,6 @@
     display: flex;
     justify-content: space-around;
     margin: 25px;
+    border-bottom: 2px solid  rgba(21, 61, 163, 0.621) ;
 }
  

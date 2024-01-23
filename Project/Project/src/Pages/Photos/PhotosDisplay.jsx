@@ -41,7 +41,7 @@ function  PhotosDisplay(props) {
     }
      
   return (<>
-  
+     
      {photos.map((photo) => <p key={photo.id}><DisplayPhoto photo={photo} setPhotos={setPhotos} photos={photos} /></p>)}
      {more&&<button onClick={()=>getMorePhotos(albumId,start,limit)}>More</button>}
   </>)

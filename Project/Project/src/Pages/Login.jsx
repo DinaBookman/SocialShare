@@ -27,10 +27,10 @@ import { useNavigate } from "react-router-dom";
     return(<>
 
         <form onSubmit={loginFunc}>
-            <label>UserName</label>
-            <input  placeholder="Enter UserName" required></input><br/>
-            <label >Password</label>
-            <input type="password" placeholder="Enter Pasword" required></input>
+            <p>UserName</p>
+            <input  placeholder="Enter UserName..." required></input><br/>
+            <p >Password</p>
+            <input type="password" placeholder="Enter Pasword..." required></input><br/><div/>
             <button type="submit">Login</button>
         </form>
         <h3>To register click </h3>

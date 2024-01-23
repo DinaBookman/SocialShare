@@ -55,31 +55,31 @@ function TodosDisplay(props) {
 
   const showSelectOrder = () => {
     return <select onChange={handleOrder}>
+      <option value="serial">Serial order</option>
       <option value="random">random</option>
       <option value="alphabetical">alphabetical Order</option>
       <option value="completed">Completed</option>
-      <option value="serial">Serial order</option>
     </select>
   }
 
   const showSelectFilter = () => {
     return <select name="filter by" id="filter" value={filter} onChange={(event) => setFilter(event.target.value)}>
-      <option value="All">All</option>
-      <option value="ID">ID</option>
-      <option value="Title">Title</option>
-      <option value="Completed">Completed</option>
-      <option value="UnCompleted">UnCompleted</option>
+      <option value="All">Display All</option>
+      <option value="ID">Display By ID</option>
+      <option value="Title">Display By Title</option>
+      <option value="Completed">Display Completed</option>
+      <option value="UnCompleted">Display UnCompleted</option>
     </select>
   }
   return (<>
     {showSelectOrder()}
     {showSelectFilter()}
     {filter === 'Title' &&
-      <>  <label>Enter wanted Title</label>
-        <input type="text" value={title} onChange={(event) => setTitle(event.target.value)}></input></>}
+      <div><label>Enter wanted Title</label>
+        <input type="text" value={title} onChange={(event) => setTitle(event.target.value)}></input></div>}
     {filter === 'ID' &&
-      <>  <label>Enter wanted Id</label>
-        <input type="number" value={id} onChange={(event) => setId(event.target.value)}></input></>}
+      <div><label>Enter wanted Id</label>
+        <input type="number" value={id} onChange={(event) => setId(event.target.value)}></input></div>}
     {todos.map((todo) => isFiltered(todo) && <div key={todo.id}><DisplayTodo todo={todo} setTodos={setTodos} todos={todos} /></div>)}
   </>)
 } export default TodosDisplay

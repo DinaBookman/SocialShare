@@ -27,12 +27,12 @@ import { Link } from "react-router-dom";
 
     return(<>
         { !continueReg && <> <form onSubmit={registerFunc}>
-            <label >UserName</label>
+            <p >UserName</p>
             <input  placeholder="Enter UserName" required></input><br/>
-            <label >Password</label>
+            <p >Password</p>
             <input id="password" type="password" placeholder="Enter Pasword" required></input><br/>
-            <label >verify password</label>
-            <input type="password" placeholder="verify Pasword" required></input>
+            <p >verify password</p>
+            <input type="password" placeholder="verify Pasword" required></input><br/><div/>
             <button type="submit">Register</button>
         </form>
         <h3>To Login click </h3>

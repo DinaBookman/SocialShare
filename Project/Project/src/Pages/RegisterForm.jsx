@@ -1,33 +1,45 @@
  
 import { useNavigate } from "react-router-dom";
-
+import React,{useEffect} from "react";
 function RegisterForm(props){
     const navigate= useNavigate();
     const {userName,password}= props;
-
+    let nextUserId;
+    const setUserId=(userId)=>{
+nextUserId=userId;
+    }
+    useEffect(() => {
+  const response =fetch("http://localhost:3000/nextID")
+  .then(res=>res.json())
+  .then(res =>setUserId(res[0]))
+  fetch("http://localhost:3000/nextID/1", {
+      method: "PATCH",
+      body: JSON.stringify({ "nextUserId": nextUserId + 1 }),
+      headers: { "Content-type": "application/json; charset=UTF-8", },
+  })
+}, [])
     function confirmRegistration(event){
         event.preventDefault();
         let newUser={
-            "id":event.target[0].value,
-            "name": event.target[1].value,
+            "name": event.target[0].value,
             "username":  userName,
-            "email": event.target[2].value,
+            "email": event.target[1].value,
             "address": {
-              "street": event.target[3].value,
-              "suite": event.target[4].value,
-              "city": event.target[5].value,
-              "zipcode": event.target[6].value,
+              "street": event.target[2].value,
+              "suite": event.target[3].value,
+              "city": event.target[4].value,
+              "zipcode": event.target[5].value,
               "geo": {
-                "lat": event.target[7].value,
-                "lng": event.target[8].value
+                "lat": event.target[6].value,
+                "lng": event.target[7].value
               }
             },
-            "phone": event.target[9].value,
+            "phone": event.target[8].value,
             "website":   password,
             "company": {
-              "name": event.target[10].value,
-              "catchPhrase": event.target[11].value,
-              "bs": event.target[12].value
+              "name": event.target[9].value,
+              "catchPhrase": event.target[10].value,
+              "bs": event.target[11].value
             }
           }
         let localUser={
@@ -48,35 +60,30 @@ function RegisterForm(props){
 
     return(
         <form onSubmit={confirmRegistration}>
-        <label>ID</label>
-        <input type="number" placeholder="Enter Id" required></input><br/>
-        <label >Name</label>
-        <input type="text" placeholder="Enter name" required></input><br/>
-        <label >Email</label>
-        <input type="email" placeholder="Enter email" required></input><br/>
-        <labal>Enter your address</labal><br/>
-        <label>Street</label>
-        <input type="text" placeholder="Enter street" required></input><br/>
-        <label>suite</label>
-        <input type="text" placeholder="Enter suite" required></input><br/>
-        <label>City</label>
-        <input type="text" placeholder="Enter city" required></input><br/>
-        <label>Zipcode</label>
-        <input type="text" placeholder="Enter zipcode" required></input><br/>
-        <label>Geo</label><br/>
-        <label>Lat</label>
-        <input type="number" placeholder="Enter lat" required></input><br/>
-        <label>Lng</label>
-        <input type="number" placeholder="Enter lng" required></input><br/>
-        <label>Phone number</label>
-        <input type="number" placeholder="Enter phonee number" required></input><br/>
-        <label>Enter the company details</label><br/>
-        <label>Enter name</label>
-        <input type="text" placeholder="company's name"></input><br/>
-        <labal>Enter catchPhrase</labal>
-        <input type="text" placeholder="catchPhrase"></input><br/>
-        <labal>Enter bs</labal>
-        <input type="text" placeholder="bs"></input><br/>
+        <p >Name</p>
+        <input type="text" placeholder="Enter your name..." required></input><br/>
+        <p >Email</p>
+        <input type="email" placeholder="Enter your email..." required></input><br/>
+        <p>Street</p>
+        <input type="text" placeholder="Enter your street..." required></input><br/>
+        <p>suite</p>
+        <input type="text" placeholder="Enter your suite..." required></input><br/>
+        <p>City</p>
+        <input type="text" placeholder="Enter your city..." required></input><br/>
+        <p>Zipcode</p>
+        <input type="text" placeholder="Enter your zipcode..." required></input><br/>
+        <p>Geo Lat</p>
+        <input type="number" placeholder="Enter your lat..." required></input><br/>
+        <p>Geo Lng</p>
+        <input type="number" placeholder="Enter your lng..." required></input><br/>
+        <p>Phone number</p>
+        <input type="number" placeholder="Enter your phone number..." required></input><br/>
+        <p>Enter name of company</p>
+        <input type="text" placeholder="Enter company's name..."></input><br/>
+        <p>Enter catchPhrase</p>
+        <input type="text" placeholder="Enter company's catchPhrase..."></input><br/>
+        <p>Enter bs</p>
+        <input type="text" placeholder="Enter company's bs..."></input><br/><div/>
 
         <button type="submit">Confirm registration</button>
         </form>

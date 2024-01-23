@@ -20,7 +20,7 @@ import style from './Home.module.css'
          <h1>Welcome {currentUser.name}</h1>
          <p className={style.allBtns}>
          <NavLink className={style.btn} to="info">Info</NavLink><br/>
-         <NavLink className={style.btn} to="todos">Todos</NavLink><br/>
+         <NavLink className={style.btn} to="todos">ToDos</NavLink><br/>
          <NavLink className={style.btn} to="posts">Posts</NavLink><br/>
          <NavLink className={style.btn} to="albums">Albums</NavLink><br/>
          <NavLink className={style.btn} onClick={()=>logOut()}>LogOut</NavLink><br/>
