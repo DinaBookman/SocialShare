@@ -1,8 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
-import style from '../Pages/Login.module.css'
-
  function Login(){
     const navigate= useNavigate();
 
@@ -27,21 +25,19 @@ import style from '../Pages/Login.module.css'
     }
     
     return(<>
-    {/* <div className={style.loginDiv}> */}
-        
-        <h1>Login</h1>
-        <form className={style.loginForm} onSubmit={loginFunc}>
-            <label className={style.loginLabel}>UserName</label>
-            <input className={style.loginInput}  required></input><br/>
-            <label className={style.loginLabel}>Password</label>
-            <input className={style.loginInput}  type="password" required></input>
-            <button className={style.loginBtn} type="submit">Login</button>
+
+        <form onSubmit={loginFunc}>
+            <label>UserName</label>
+            <input  placeholder="Enter UserName" required></input><br/>
+            <label >Password</label>
+            <input type="password" placeholder="Enter Pasword" required></input>
+            <button type="submit">Login</button>
         </form>
-        <Link className={style.registrationLink} to={"/register"}>
-        👇🏻
-        To register click Here  
+        <h3>To register click </h3>
+        <Link  to={"/register"}>
+                     Here 
                 </Link>
-          {/* </div> */}
+          
         </>) 
   };
   export default Login

@@ -2,7 +2,6 @@ import { useState} from "react";
 import React from "react";
 import RegisterForm from "./RegisterForm";
 import { Link } from "react-router-dom";
-import style from '../Pages/Register.module.css'
 
  function Register(){
     const [continueReg, setContinueReg]=useState(false);
@@ -28,19 +27,18 @@ import style from '../Pages/Register.module.css'
     }
 
 
-    return(
-    <>
-          <h1>Registration</h1>
-        { !continueReg && <> <form className={style.registerForm} onSubmit={registerFunc}>
-            <label className={style.registrationLabel}>UserName</label>
-            <input className={style.registerInput} placeholder="Enter UserName" required></input><br/>
-            <label className={style.registrationLabel}>Password</label>
-            <input className={style.registerInput} id="password" type="password" placeholder="Enter Pasword" required></input><br/>
-            <label className={style.registrationLabel}>verify password</label>
-            <input className={style.registerInput} type="password" placeholder="verify Pasword" required></input>
-            <button className={style.registerBtn} type="submit">Register</button>
+    return(<>
+        { !continueReg && <> <form onSubmit={registerFunc}>
+            <label >UserName</label>
+            <input  placeholder="Enter UserName" required></input><br/>
+            <label >Password</label>
+            <input id="password" type="password" placeholder="Enter Pasword" required></input><br/>
+            <label >verify password</label>
+            <input type="password" placeholder="verify Pasword" required></input>
+            <button type="submit">Register</button>
         </form>
-        <Link className={style.loginLink} to={"/Login"}>👇🏻 To Login click Here</Link> </>
+        <h3>To Login click </h3>
+        <Link to={"/Login"}>Here</Link> </>
         }
         {continueReg && <RegisterForm userName={userName} password={password} />}
         </>) 
