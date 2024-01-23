@@ -8,14 +8,24 @@ import style from './Home.module.css'
     const navigate= useNavigate();
    const {userId}=useParams()
 
-    function logOut(){
-        setCurrentUser(null)
-        navigate("/")
-        localStorage.clear
+    // function logOut(){
+    //     setCurrentUser(null)
+    //     navigate("/")
+    //     localStorage.clear
         
-    }
-    useEffect(()=>{{(currentUser===null||currentUser.id!=userId) && navigate("/") };},[currentUser])
-
+    // }
+    useEffect(() => {
+        if (currentUser === null) {
+          navigate("/");
+        }
+      }, [currentUser]);
+    
+      const logOut = () => {
+        localStorage.clear();
+        setCurrentUser(null);
+        //navigate("/");
+      };
+      
  return(<>
          <h1>Welcome {currentUser.name}</h1>
          <p className={style.allBtns}>

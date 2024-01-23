@@ -4,7 +4,7 @@
       "id": "1",
       "nextUserId": 15,
       "nextPostId": 504,
-      "nextAlbumId": 106,
+      "nextAlbumId": 107,
       "nextTodoId": 228,
       "nextCommentId": 516,
       "nextPhotoId": 1009
@@ -1980,6 +1980,11 @@
       "id": "105",
       "userId": "1",
       "title": "Dina Gross's Album"
+    },
+    {
+      "id": "106",
+      "userId": "1",
+      "title": ""
     }
   ],
   "photos": [
