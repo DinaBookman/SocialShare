@@ -14,4 +14,7 @@
     margin: 25px;
     border-bottom: 2px solid  rgba(21, 61, 163, 0.621) ;
 }
- 
+
+body{
+    background-image: none;
+}

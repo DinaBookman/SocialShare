@@ -7,6 +7,8 @@ import { Link } from "react-router-dom";
     const [continueReg, setContinueReg]=useState(false);
     const [userName, setUserName]=useState("");
     const[password, setPasword]=useState("");
+
+    
     function registerFunc(event){
         event.preventDefault();
         let _userName= event.target[0].value;
