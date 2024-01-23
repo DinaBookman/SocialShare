@@ -1,9 +1,10 @@
-import React from "react";
+import React,{useContext} from "react";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import { UserContext } from "../App";
  function Login(){
     const navigate= useNavigate();
-
+    const {currentUser,setCurrentUser}=useContext(UserContext)
     function loginFunc(event){
         event.preventDefault();
         let userName=event.target[0].value;
@@ -16,6 +17,8 @@ import { useNavigate } from "react-router-dom";
     }
     
     function successLogin(response){
+        setCurrentUser(response[0]);
+        console.log(response[0])
         let localUser={
             "id": response[0].id,
             "name": response[0].name,

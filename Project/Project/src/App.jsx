@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {createContext,useState} from 'react'
 import './App.css'
 import NoPage from './Pages/NoPage.jsx'
 import Login from './Pages/Login.jsx'
@@ -10,15 +10,16 @@ import Albums from './Pages/Albums/Albums.jsx'
 import Posts from './Pages/Posts/Posts.jsx'
 import Info from './Pages/Info.jsx'
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
- 
+export const UserContext=createContext();
 
 
 function App() {
-  const currentUser=JSON.parse(localStorage.getItem("User"));
+  const [currentUser,setCurrentUser]=useState(JSON.parse(localStorage.getItem("User")))
   console.log(currentUser)
   const currentPage=currentUser? `/users/${currentUser.id}/home`:"/login";
   return (
     <>
+    <UserContext.Provider value={{currentUser,setCurrentUser}}>
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Navigate to={currentPage} />} />
@@ -34,6 +35,7 @@ function App() {
           <Route path="*" element={<NoPage />} />
         </Routes>
       </BrowserRouter>
+  </UserContext.Provider>
     </>
   )
 }

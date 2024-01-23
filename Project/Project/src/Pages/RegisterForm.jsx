@@ -1,27 +1,28 @@
  import { useNavigate } from "react-router-dom";
-import React,{useEffect} from "react";
- 
+import React,{useEffect,useState,useContext} from "react";
+import { UserContext } from "../App";
 
 function RegisterForm(props){
+  const {setCurrentUser}=useContext(UserContext)
     const navigate= useNavigate();
     const {userName,password}= props;
-    let nextUserId;
-    const setUserId=(userId)=>{
-nextUserId=userId;
-    }
-    useEffect(() => {
-  const response =fetch("http://localhost:3000/nextID")
+    const [userId,setUserId]=useState()
+  useEffect(() => {
+  fetch("http://localhost:3000/nextID")
   .then(res=>res.json())
-  .then(res =>setUserId(res[0]))
-  fetch("http://localhost:3000/nextID/1", {
+  .then(res =>{
+    setUserId(res[0].nextUserId)})
+    .then(
+  fetch("http://localhost:3000/nextID/1",{
       method: "PATCH",
-      body: JSON.stringify({ "nextUserId": nextUserId + 1 }),
+      body: JSON.stringify({ "nextUserId":userId + 1 }),
       headers: { "Content-type": "application/json; charset=UTF-8", },
-  })
+  }))
 }, [])
     function confirmRegistration(event){
         event.preventDefault();
         let newUser={
+            "id":userId,
             "name": event.target[0].value,
             "username":  userName,
             "email": event.target[1].value,
@@ -45,8 +46,8 @@ nextUserId=userId;
           }
           
         let localUser={
-          "id":event.target[0].value,
-            "name": event.target[1].value,
+          "id": userId,
+            "name": event.target[0].value,
         }
         const requestOptions = {
                 method: 'POST',
@@ -55,6 +56,7 @@ nextUserId=userId;
             };
         fetch('http://localhost:3000/users', requestOptions)
         localStorage.setItem("User" ,[JSON.stringify(localUser)])
+        setCurrentUser(newUser)
         navigate(`/users/${newUser.id}/home`)
     }
 

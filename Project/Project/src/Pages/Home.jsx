@@ -7,13 +7,6 @@ import style from './Home.module.css'
     const [currentUser,setCurrentUser]=useState(JSON.parse(localStorage.getItem("User")))
     const navigate= useNavigate();
    const {userId}=useParams()
-
-    // function logOut(){
-    //     setCurrentUser(null)
-    //     navigate("/")
-    //     localStorage.clear
-        
-    // }
     useEffect(() => {
         if (currentUser === null) {
           navigate("/");
@@ -23,10 +16,10 @@ import style from './Home.module.css'
       const logOut = () => {
         localStorage.clear();
         setCurrentUser(null);
-        //navigate("/");
       };
       
  return(<>
+ {currentUser&&<>
          <h1>Welcome {currentUser.name}</h1>
          <p className={style.allBtns}>
          <NavLink className={style.btn} to="info">Info</NavLink><br/>
@@ -34,7 +27,7 @@ import style from './Home.module.css'
          <NavLink className={style.btn} to="posts">Posts</NavLink><br/>
          <NavLink className={style.btn} to="albums">Albums</NavLink><br/>
          <NavLink className={style.btn} onClick={()=>logOut()}>LogOut</NavLink><br/>
-         </p>
+         </p></>}
          <Outlet/>
         </>) 
   };
