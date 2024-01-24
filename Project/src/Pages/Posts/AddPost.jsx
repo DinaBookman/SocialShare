@@ -21,7 +21,6 @@ function AddPost(props) {
             },
         })
             .then((response) => response.json())
-            .then((json) => console.log(json));
         let newPost = {
             "userId": userId,
             "id": nextPostId.toString(),

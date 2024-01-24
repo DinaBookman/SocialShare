@@ -23,7 +23,6 @@ function RegisterForm(props) {
       },
     })
       .then((response) => response.json())
-      .then((json) => console.log(json));
 
       let newUser = {
       "id": nextUserId.toString(),
