@@ -15,6 +15,7 @@ function UpdatePhoto(props) {
         updatePhotoRequest("title", updatedTitle)
     }
     const updatePhotoRequest = (key, newValue) => {
+        try{ 
         const updatedPhoto = { ...photo, [key]: newValue };
         fetch(`http://localhost:3000/photos/${photos.id}`, {
             method: "PATCH",
@@ -27,7 +28,9 @@ function UpdatePhoto(props) {
         })
             .then((response) => response.json())
              setPhotos(photos.map((photo1) => photo1.id === photo.id ? updatedPhoto : photo1));
-            
+            } catch (error) {
+                console.error("Error updating photo:", error.message);
+            }  
     }
 
     return (<>

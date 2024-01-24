@@ -21,6 +21,7 @@ function UpdatePost(props) {
             updateCommentRequest("body", updatedBody)
     }
     const updateCommentRequest = (key, newValue) => {
+        try{ 
         const updatedComment = { ...comment, [key]: newValue };
         fetch(`http://localhost:3000/comments/${comment.id}`, {
             method: "PATCH",
@@ -32,9 +33,10 @@ function UpdatePost(props) {
             },
         })
             .then((response) => response.json())
-            .then((json) => console.log(json));
            setComments(comments.map((prevComment) => prevComment.id === comment.id ? updatedComment : prevComment));
-            
+        } catch (error) {
+            console.error("Error updating comment:", error.message);
+        }   
     }
 
     return (<>

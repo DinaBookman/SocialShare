@@ -20,6 +20,7 @@ function UpdatePost(props) {
             updatePostRequest("body", updatedBody)
     }
     const updatePostRequest = (key, newValue) => {
+        try{
         const updatedPost = { ...post, [key]: newValue };
         fetch(`http://localhost:3000/posts/${post.id}`, {
             method: "PATCH",
@@ -32,7 +33,9 @@ function UpdatePost(props) {
         })
             .then((response) => response.json())
              setPosts(posts.map((post1) => post1.id === post.id ? updatedPost : post1));
-            
+            } catch (error) {
+                console.error("Error updating post:", error.message);
+            }
     }
 
     return (<>

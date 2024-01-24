@@ -17,6 +17,7 @@ function UpdateTodo(props) {
     }
 
     const updateTodoRequest = (key, newValue) => {
+    try{
         const updatedTodo = { ...todo, [key]: newValue };
         fetch(`http://localhost:3000/todos/${todo.id}`, {
             method: 'PUT',
@@ -30,6 +31,9 @@ function UpdateTodo(props) {
                 }
                 setTodos(todos.map((todo1) => todo1.id === todo.id ? updatedTodo : todo1));
             })
+        } catch (error) {
+            console.error("Error Updating todo:", error.message);
+        }
     }
 
     return (<><strong>completed:</strong>

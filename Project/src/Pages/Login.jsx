@@ -5,16 +5,16 @@ function Login() {
 
     const navigate = useNavigate();
     const { setCurrentUser } = useContext(UserContext);
-
     function loginFunc(event) {
         event.preventDefault();
         let userName = event.target[0].value;
         let password = event.target[1].value;
         fetch(`http://localhost:3000/users/?username=${userName}&website=${password}`)
-            .then(response => (response.json()))
-            .then(response => { response.length == 0 ? alert("No such user. Please register") : successLogin(response[0]) })
+            .then(response => response.json())
+            .then(response => response.length === 0 ? alert("No such user. Please register") : successLogin(response[0]))
+            .catch(error => console.error("Error during login:", error));
     }
-
+    
     function successLogin(user) {
         delete user["website"];
         localStorage.setItem("User", [JSON.stringify(user)])
