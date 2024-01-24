@@ -3,6 +3,7 @@ function DeleteComment(props) {
     const { comment, comments, setComments} = props;
 
     function handleDelete(ID) {
+        try{ 
         fetch(`http://localhost:3000/comments/${ID}`, {
             method: 'DELETE',
             headers: {
@@ -16,6 +17,9 @@ function DeleteComment(props) {
         }).catch(error => {
             console.error(error);
         });
+    } catch (error) {
+        console.error("Error deleting comment:", error.message);
+    }
     }
 
     return (<>

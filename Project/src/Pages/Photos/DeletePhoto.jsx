@@ -3,6 +3,7 @@ function DeletePhoto(props) {
     const { photo, photos, setPhotos } = props;
 
     function handleDelete(ID) {
+        try{ 
         fetch(`http://localhost:3000/photos/${ID}`, {
             method: 'DELETE',
             headers: {
@@ -16,6 +17,9 @@ function DeletePhoto(props) {
         }).catch(error => {
             console.error(error);
         });
+    } catch (error) {
+        console.error("Error deleting photo:", error.message);
+    }
     }
 
     return (<>
