@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { useParams } from "react-router-dom";
 function UpdatePost(props) {
     const { post, posts, setPosts } = props;
     const [updatedTitle, setUpdatedTitle] = useState(post.title)

@@ -10,8 +10,8 @@ function DisplayPost(props) {
     return (<>
         <div style={showMore ? { backgroundColor: '#dcdcdc' } : { backgroundColor: 'white' }}>
 
-            <strong>post ID:</strong>{post.id} <br />
-            <strong>Title</strong>{post.title} <br />
+            <strong>post ID: </strong>{post.id} <br />
+            <strong>Title: </strong>{post.title} <br />
             {showMore && <><strong>Body: </strong>{post.body} <br /></>}
             <DeletePost post={post} posts={posts} setPosts={setPosts} />
             <UpdatePost post={post} posts={posts} setPosts={setPosts} />

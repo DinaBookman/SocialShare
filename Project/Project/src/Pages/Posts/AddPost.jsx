@@ -24,7 +24,7 @@ function AddPost(props) {
             .then((json) => console.log(json));
         let newPost = {
             "userId": userId,
-            "id": nextPostId,
+            "id": nextPostId.toString(),
             "title": event.target[0].value,
             "body": event.target[1].value
         }

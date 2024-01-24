@@ -1,20 +1,22 @@
-.btn{
+.btn {
     color: rgb(60, 84, 158);
     font-family: papyrus;
     font-size: 40px;
     margin: 2%;
     padding: 2%;
 }
-.btn:hover{
+
+.btn:hover {
     color: rgba(60, 85, 158, 0.53);
 }
-.allBtns{
+
+.allBtns {
     display: flex;
     justify-content: space-around;
     margin: 25px;
-    border-bottom: 2px solid  rgba(21, 61, 163, 0.621) ;
+    border-bottom: 2px solid rgba(21, 61, 163, 0.621);
 }
 
-body{
+body {
     background-image: none;
 }

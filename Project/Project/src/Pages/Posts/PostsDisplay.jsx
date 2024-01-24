@@ -44,6 +44,6 @@ const showFilterInputs=()=>{
   return (<>
     {showSelectFilter()}
     {showFilterInputs()}
-    {posts.map((post) => (isFiltered(post) && <DisplayPost post={post} setPosts={setPosts} posts={posts} />))}
+    {posts.map((post) => (isFiltered(post) && <DisplayPost key={post.id} post={post} setPosts={setPosts} posts={posts} />))}
   </>)
 } export default PostsDisplay
