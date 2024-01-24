@@ -37,7 +37,7 @@ function PhotosDisplay(props) {
 
       const json_response = await response.json();
 
-      if (json_response.length >= 1 && json_response.length === limit) {
+      if (json_response.length === limit) {
         return json_response;
       } else  
         setMore(false);

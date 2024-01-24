@@ -3,7 +3,7 @@ import PostsDisplay from "./PostsDisplay";
 import AddPost from "./AddPost";
 import { UserContext } from '../../App';
 function Posts() {
-    const { currentUser} = useContext(UserContext)
+  const { currentUser} = useContext(UserContext)
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);

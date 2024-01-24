@@ -4,7 +4,7 @@
       "id": "1",
       "nextUserId": 18,
       "nextPostId": 113,
-      "nextAlbumId": 107,
+      "nextAlbumId": 108,
       "nextTodoId": 230,
       "nextCommentId": 520,
       "nextPhotoId": 5012
@@ -2015,6 +2015,11 @@
       "id": "105",
       "userId": "1",
       "title": "Dina Gross's Album"
+    },
+    {
+      "id": "107",
+      "userId": "1",
+      "title": "gfgfgh fghj"
     }
   ],
   "photos": [
@@ -2024,13 +2029,6 @@
       "title": "accusamus beatae ad facilis cum similique qui sunt",
       "url": "https://via.placeholder.com/600/92c952",
       "thumbnailUrl": "https://via.placeholder.com/150/92c952"
-    },
-    {
-      "albumId": "1",
-      "id": "2",
-      "title": "reprehenderit est deserunt velit ipsam",
-      "url": "https://via.placeholder.com/600/771796",
-      "thumbnailUrl": "https://via.placeholder.com/150/771796"
     },
     {
       "albumId": "1",
