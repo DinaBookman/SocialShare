@@ -1,6 +1,6 @@
 import React, { createContext, useState } from 'react'
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
-import './App.css'
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom"
+import './App.css'; 
 import FailToLoadPage from './Pages/FailToLoadPage.jsx'
 import Login from './Pages/Login.jsx'
 import Register from './Pages/Register.jsx'
