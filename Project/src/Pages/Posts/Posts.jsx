@@ -1,16 +1,15 @@
-import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import React, { useState, useEffect ,useContext } from "react";
 import PostsDisplay from "./PostsDisplay";
 import AddPost from "./AddPost";
-
+import { UserContext } from '../../App';
 function Posts() {
+    const { currentUser} = useContext(UserContext)
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const { userId } = useParams();
 
   useEffect(() => {
-    fetch(`http://localhost:3000/posts/?userId=${userId}`)
+    fetch(`http://localhost:3000/posts/?userId=${currentUser.id}`)
       .then((response) => response.json())
       .then((response) => {
         setPosts(response);

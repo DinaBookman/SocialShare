@@ -1,18 +1,18 @@
-import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import React, { useEffect, useState ,useContext } from "react";
 import AlbumsDisplay from "./AlbumsDisplay";
 import AddAlbum from "./AddAlbum";
-
+import { UserContext } from '../../App';
 function Album() {
+  const { currentUser} = useContext(UserContext)
   const [albums, setAlbums] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const { userId } = useParams();
+   
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch(`http://localhost:3000/albums/?userId=${userId}`);
+        const response = await fetch(`http://localhost:3000/albums/?userId=${currentUser.id}`);
 
         if (!response.ok) {
           throw new Error(`HTTP error! Status: ${response.status}`);

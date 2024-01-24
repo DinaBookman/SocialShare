@@ -1,16 +1,15 @@
-import React, { useEffect, useState } from "react";
-import {useParams } from "react-router-dom"
+import React, { useEffect, useState ,useContext } from "react";
 import TodosDisplay from "./TodosDisplay";
 import AddTodo from "./AddTodo";
-
+import { UserContext } from '../../App' ;
 function Todos(){
+    const { currentUser} = useContext(UserContext)
     const [todos, setTodos] = useState([]);
-    const { userId } = useParams();
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
 
     useEffect(() => {
-        fetch(`http://localhost:3000/todos/?userId=${userId}`)
+        fetch(`http://localhost:3000/todos/?userId=${currentUser.id}`)
             .then(response => response.json())
             .then(res => {
                 setTodos(res);
